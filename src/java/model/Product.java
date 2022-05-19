@@ -72,11 +72,5 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-    
-    
+    }    
 }
-
-
-//INSERT INTO Products(name, description, quantity, category, supplier, price)
-//VALUES

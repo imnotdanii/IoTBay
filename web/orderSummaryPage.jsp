@@ -26,7 +26,7 @@ This page is used to summarise and confirm the products and cost of order, as we
         
         <header>
             <div id="top-bar">
-                <a href="index.html"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
+                <a href="index.jsp"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
             </div>
         </header>
         
@@ -74,7 +74,7 @@ This page is used to summarise and confirm the products and cost of order, as we
             <a href="index.jsp"><button>Save Cart</button></a>
             --%>
             
-            <form action="/SaveOrderServlet" method="post">
+            <form action="<%=request.getContextPath()%>/SaveOrderServlet" method="post">
                 <button>Save Order</button>
             </form>
             
