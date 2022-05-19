@@ -25,10 +25,11 @@ This page is used to summarise the current products in a cart, before proceeding
     </head>
     
     <body>
-        <%--
-        Insert site header/menu/banner here.
-        --%>
-        <h1>Header/Menu/Banner Section</h1> <br>
+        <header>
+            <div id="top-bar">
+                <a href="index.html"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
+            </div>
+        </header>
         
         <%--
         DYNAMIC SECTION:
@@ -43,32 +44,26 @@ This page is used to summarise the current products in a cart, before proceeding
             <%--move a lot of this into the model if possible?--%>
             
             <%
+                //for FUTURE cart component?
                 //get needed parameters
+                //Need a WatchCartServlet?
                 boolean cartEmpty = true; //request if cart is empty?
                 boolean loggedIn = false; //request status of session?
-                String emptyCartMessage = ""; 
-            %>
-            
-            <%
-                String accountID;// change this to int?
-                if (loggedIn)
-                {
-                    accountID = request.getParameter("accountID"); //need to do this for int though?
-                }
-                else
-                {
-                    accountID = "Un-Registered User"; //or just getID and allocate Id for unreg'd?
-                }
+                String cartMessage = ""; 
             %>
             
             <%
                 if (cartEmpty)
                 {
-                    emptyCartMessage = "It looks like your cart is empty! Head over to the products page to add a product to your cart.";
+                    cartMessage = "It looks like your cart is empty! Head over to the products page to add a product to your cart.";
+                }
+                else
+                {
+                    cartMessage = "Please select 'Create Order' to continue!";
                 }
             %>
             
-            <p> <%= emptyCartMessage %> </p> <br>
+            <p> <%= cartMessage %> </p> <br>
             
             <%-- 
                 Create the base for the cart items.
@@ -76,8 +71,6 @@ This page is used to summarise the current products in a cart, before proceeding
             --%>
             
         </div>
-        
-        
         
         <%--
         DYNAMIC SECTION:
@@ -90,7 +83,23 @@ This page is used to summarise the current products in a cart, before proceeding
         --%>
         <h1>Save/Create Order Buttons Section (Dynamic)</h1> <br>
         
+        <div id="orderButtonsDiv">
+            <%--
+            Create another button for "save cart"? Redirects to home page?
+            <a href="index.jsp"><button>Save Cart</button></a>
+            --%>
+            
+            <form action="/CreateOrderServlet" method="post">
+                <button>Create Order</button>
+            </form>
+            
+        </div>
         
+        <footer>
+            <p>&copy; Group 8</p>
+            <p>Introduction to Software Development 2022</p>
+            <p>University of Technology, Sydney</p>
+        </footer>
     </body>
     
 </html>

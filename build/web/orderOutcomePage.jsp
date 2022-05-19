@@ -24,16 +24,24 @@ This page is used to display the outcome of the SAVE or ORDER actions (display s
     
     <body>
         
-        <%--
-        Insert site header/menu/banner here.
-        --%>
-        <h1>Header/Menu/Banner Section</h1> <br>
+        <header>
+            <div id="top-bar">
+                <a href="index.html"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
+            </div>
+        </header>
     
         <%--
         DYNAMIC SECTION:
         Request: outcome result from previous page
         --%>
         <h1>Outcome Section (Dynamic)</h1> <br>
+        
+        
+        <footer>
+            <p>&copy; Group 8</p>
+            <p>Introduction to Software Development 2022</p>
+            <p>University of Technology, Sydney</p>
+        </footer>
         
     </body>
     
