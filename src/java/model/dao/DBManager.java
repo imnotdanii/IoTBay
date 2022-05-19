@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import model.User;
+import java.util.ArrayList;
+import model.Order;
 
 /**
  *
@@ -57,16 +59,43 @@ public class DBManager {
         statement.executeUpdate("DELETE FROM iotadmin.Users WHERE EMAIL='" + email + "'");
 
     }
-
-   public void addPayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
-        statement.executeUpdate("INSERT INTO iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
+ 
+    
+//Add an order to the database:
+    //orderID, accountID, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice
+    public void addOrder(int orderID, int accountID, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException {
+        statement.executeUpdate("INSERT INTO iotadmin.OrdersTable " + "VALUES(' " + orderID + " ', ' " + accountID + " ', ' " + orderProgress + " ', ' " + orderCancelled + " ', ' " + orderConfirmed + " ', ' " + editingEnabled + " ', ' " + dateCreated + " ', ' " + dateSubmitted + " ', ' " + totalOrderPrice + " ')" );
     }
-    public void updatePayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail)throws SQLException {
-        statement.executeUpdate("UPDATE iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
-}
 
-    public void deletePayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail)throws SQLException {
-        statement.executeUpdate("DELETE iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
-}
+//update an existing order in the database:  
+    //also used for cancel order (rather than delete) as record needs to stay in system.
+    public void updateOrder(int orderID, int accountID, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException {
+        statement.executeUpdate("UPDATE iotadmin.OrdersTable SET ORDERID= ' " + orderID + " ', ACCOUNTID= ' " + accountID + " ', ORDERPROGRESS= ' " + orderProgress + " ', ORDERCANCELLED= ' " + orderCancelled + " ', ORDERCONFIRMED= ' " + orderConfirmed + " ', EDITINGENABLED= ' " + editingEnabled + " ', DATECREATED= ' " + dateCreated + " ', DATESUBMITTED= ' " + dateSubmitted + " ', TOTALORDERPRICE= ' " + totalOrderPrice + " ' " );
+    }
 
+//delete an order from the database:
+    public void deleteOrder(int orderID) throws SQLException {
+        statement.executeUpdate("DELETE FROM iotadmin.OrdersTable WHERE ORDERID= '"+orderID+"'");
+    }
+
+//Fetch Orders (for use when customers need to check their list of saved orders?)    
+    public ArrayList <Order> fetchOrders() throws SQLException {
+        String fetch = "SELECT * FROM iotadmin.OrdersTable";
+        ResultSet rs = statement.executeQuery(fetch);
+        ArrayList <Order> temp = new ArrayList();
+        
+            while(rs.next()) {
+                int orderID = rs.getInt(1);
+                int accountID = rs.getInt(2);
+                int orderProgress = rs.getInt(3);
+                boolean orderCancelled = rs.getBoolean(4);
+                boolean orderConfirmed = rs.getBoolean(5);
+                boolean ordereditingEnabled = rs.getBoolean(6);
+                String dateCreated = rs.getString(7);
+                String dateSubmitted = rs.getString(7);
+                double totalOrderPrice = rs.getDouble(8);
+            }
+            return temp;
+    }
+    
 }

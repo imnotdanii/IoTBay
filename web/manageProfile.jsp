@@ -20,7 +20,7 @@
     </head>
     <header>
         <div id="search-area-container">
-            <a href="index.html"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
+            <a href="index.jsp"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
             <div class="search-form-container">
                 <form>
                     <input type="text" placeholder="What are you looking for?" name="search-bar" id="search-bar">

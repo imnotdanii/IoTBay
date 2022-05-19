@@ -6,8 +6,33 @@
     Author     : dylanstyman
 */
 
+/*
+    Will add a lot more here soon.
+*/
+
 #cartDiv {
   display: block;
 }
 
+#orderButtonsDiv {
+    display: block;
+    align-items: center;
+}
 
+#logo{
+  width:240px;
+  height:100px;
+}
+
+footer{
+  margin-top: 1%;
+  border-top: 1px solid #000000;
+  padding: 2% 0 2% 0;
+  text-align: end;
+}
+
+#top-bar{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

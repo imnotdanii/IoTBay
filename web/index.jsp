@@ -46,7 +46,7 @@
                         <button>Manage My Profile</button>
                     </form>
                     <%}%>
-                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href="orderSummaryPage.jsp"><i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
             </div>
 

@@ -35,6 +35,12 @@
         <servlet-class>controller.DeleteServlet</servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet </servlet-name>
+        <servlet-class>controller.PaymentServlet </servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -68,6 +74,11 @@
         <servlet-name>DeleteServlet</servlet-name>
         <url-pattern>/DeleteServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/PaymentServlet</url-pattern>
+    </servlet-mapping>
+    
     
     <session-config>
         <session-timeout>
