@@ -25,10 +25,11 @@ This page is used to summarise and confirm the products, price, shipping, paymen
     
     <body>
         
-        <%--
-        Insert site header/menu/banner here.
-        --%>
-        <h1>Header/Menu/Banner Section</h1> <br>
+        <header>
+            <div id="top-bar">
+                <a href="index.html"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
+            </div>
+        </header>
         
         <p>Please check your order details below before confirming.</p>
         
@@ -70,7 +71,20 @@ This page is used to summarise and confirm the products, price, shipping, paymen
                 -> check if details are valid (see Key Features 4). if not, error. 
                 -> writes changes to DB, redirect to PROCESSING or ORDER OUTCOME PAGE.
         --%>
-        <h1>Save & Next Buttons Section</h1> <br>
+        <div id="orderButtonsDiv">
+            
+            <form action="/SubmitOrderServlet" method="post">
+                <button>Save Order</button>
+            </form>
+            
+        </div>
+        
+        
+        <footer>
+            <p>&copy; Group 8</p>
+            <p>Introduction to Software Development 2022</p>
+            <p>University of Technology, Sydney</p>
+        </footer>
         
     </body>
     
