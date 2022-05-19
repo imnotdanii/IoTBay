@@ -17,7 +17,7 @@
     <body>
         <header>
         <div id="top-bar">
-           <a href="index.html"><img src="iotbaylogo.png" alt="" id="logo"></a>
+           <a href="index.jsp"><img src="iotbaylogo.png" alt="" id="logo"></a>
         </div>
     </header>
         <main>
@@ -35,7 +35,7 @@
             </select>
             </h2>
             
-            <form>
+            <form action="<%=request.getContextPath()%>/PaymentServlet" method="post">
                 <label for="name">Card Owner Name:</label><br>
                 <input type="text" id="COname" name="COname" placeholder="Enter your card owner name..." required="true"><br>
                 <label for="CNumber">Card Number:</label><br>

@@ -13,7 +13,7 @@ import model.dao.DBManager;
 public class Order {
     private int orderID;
     //private Account userAccount;
-    private int accountID;
+    private String email;
     private int orderProgress;
     private double totalOrderPrice;
     private boolean orderCancelled;
@@ -25,9 +25,9 @@ public class Order {
     
     // Constructor:
 
-    public Order(int orderID, int accountID, int orderProgress, double totalOrderPrice, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, LinkedList<Product> productsInOrder) {
+    public Order(int orderID, String email, int orderProgress, double totalOrderPrice, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, LinkedList<Product> productsInOrder) {
         this.orderID = orderID;
-        this.accountID = accountID;
+        this.email = email;
         this.orderProgress = orderProgress;
         this.totalOrderPrice = totalOrderPrice;
         this.orderCancelled = orderCancelled;
@@ -38,52 +38,12 @@ public class Order {
         this.productsInOrder = productsInOrder;
     }
 
-    public int getOrderID() {
-        return orderID;
-    }
-
-    public int getAccountID() {
-        return accountID;
-    }
-
-    public int getOrderProgress() {
-        return orderProgress;
-    }
-
-    public double getTotalOrderPrice() {
-        return totalOrderPrice;
-    }
-
-    public boolean isOrderCancelled() {
-        return orderCancelled;
-    }
-
-    public boolean isOrderConfirmed() {
-        return orderConfirmed;
-    }
-
-    public boolean isEditingEnabled() {
-        return editingEnabled;
-    }
-
-    public String getDateCreated() {
-        return dateCreated;
-    }
-
-    public String getDateSubmitted() {
-        return dateSubmitted;
-    }
-
-    public LinkedList<Product> getProductsInOrder() {
-        return productsInOrder;
-    }
-
     public void setOrderID(int orderID) {
         this.orderID = orderID;
     }
 
-    public void setAccountID(int accountID) {
-        this.accountID = accountID;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setOrderProgress(int orderProgress) {
@@ -117,8 +77,46 @@ public class Order {
     public void setProductsInOrder(LinkedList<Product> productsInOrder) {
         this.productsInOrder = productsInOrder;
     }
-    
-    
+
+    public int getOrderID() {
+        return orderID;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public int getOrderProgress() {
+        return orderProgress;
+    }
+
+    public double getTotalOrderPrice() {
+        return totalOrderPrice;
+    }
+
+    public boolean isOrderCancelled() {
+        return orderCancelled;
+    }
+
+    public boolean isOrderConfirmed() {
+        return orderConfirmed;
+    }
+
+    public boolean isEditingEnabled() {
+        return editingEnabled;
+    }
+
+    public String getDateCreated() {
+        return dateCreated;
+    }
+
+    public String getDateSubmitted() {
+        return dateSubmitted;
+    }
+
+    public LinkedList<Product> getProductsInOrder() {
+        return productsInOrder;
+    }
     
     
 }
