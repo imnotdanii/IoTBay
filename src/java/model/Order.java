@@ -1,9 +1,5 @@
 package model;
 import java.util.LinkedList;
-import java.time.*; 
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import model.dao.DBManager;
 
 /*
  * @author dylanstyman
@@ -117,6 +113,4 @@ public class Order {
     public LinkedList<Product> getProductsInOrder() {
         return productsInOrder;
     }
-    
-    
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 /**
@@ -72,5 +68,11 @@ public class Product {
 
     public void setPrice(double price) {
         this.price = price;
-    }    
+    }
+    
+    
 }
+
+
+//INSERT INTO Products(name, description, quantity, category, supplier, price)
+//VALUES
