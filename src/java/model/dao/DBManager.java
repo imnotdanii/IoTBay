@@ -63,14 +63,14 @@ public class DBManager {
     
 //Add an order to the database:
     //orderID, accountID, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice
-    public void addOrder(int orderID, int accountID, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException {
-        statement.executeUpdate("INSERT INTO iotadmin.OrdersTable " + "VALUES(' " + orderID + " ', ' " + accountID + " ', ' " + orderProgress + " ', ' " + orderCancelled + " ', ' " + orderConfirmed + " ', ' " + editingEnabled + " ', ' " + dateCreated + " ', ' " + dateSubmitted + " ', ' " + totalOrderPrice + " ')" );
+    public void addOrder(int orderID, String userEmail, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException {
+        statement.executeUpdate("INSERT INTO iotadmin.OrdersTable " + "VALUES(' " + orderID + " ', ' " + userEmail + " ', ' " + orderProgress + " ', ' " + orderCancelled + " ', ' " + orderConfirmed + " ', ' " + editingEnabled + " ', ' " + dateCreated + " ', ' " + dateSubmitted + " ', ' " + totalOrderPrice + " ')" );
     }
 
 //update an existing order in the database:  
     //also used for cancel order (rather than delete) as record needs to stay in system.
-    public void updateOrder(int orderID, int accountID, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException {
-        statement.executeUpdate("UPDATE iotadmin.OrdersTable SET ORDERID= ' " + orderID + " ', ACCOUNTID= ' " + accountID + " ', ORDERPROGRESS= ' " + orderProgress + " ', ORDERCANCELLED= ' " + orderCancelled + " ', ORDERCONFIRMED= ' " + orderConfirmed + " ', EDITINGENABLED= ' " + editingEnabled + " ', DATECREATED= ' " + dateCreated + " ', DATESUBMITTED= ' " + dateSubmitted + " ', TOTALORDERPRICE= ' " + totalOrderPrice + " ' " );
+    public void updateOrder(int orderID, String userEmail, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException {
+        statement.executeUpdate("UPDATE iotadmin.OrdersTable SET ORDERID= ' " + orderID + " ', ACCOUNTID= ' " + userEmail + " ', ORDERPROGRESS= ' " + orderProgress + " ', ORDERCANCELLED= ' " + orderCancelled + " ', ORDERCONFIRMED= ' " + orderConfirmed + " ', EDITINGENABLED= ' " + editingEnabled + " ', DATECREATED= ' " + dateCreated + " ', DATESUBMITTED= ' " + dateSubmitted + " ', TOTALORDERPRICE= ' " + totalOrderPrice + " ' " );
     }
 
 //delete an order from the database:

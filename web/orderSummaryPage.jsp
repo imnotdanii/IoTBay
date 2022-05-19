@@ -1,6 +1,6 @@
 <%-- 
     Assignment Drafting.
-    Version: 0.
+    Version: 2
 
     Document   : orderSummaryPage
     Created on : 16/05/2022, 11:06:35 AM
@@ -52,14 +52,6 @@ This page is used to summarise and confirm the products and cost of order, as we
                if so, also display "is correct? change?" button that saves order and redirects to edit acc. deets.)
         --%>
         <h1>Address Information Section (Dynamic)</h1> <br>
-        
-        <%--
-        DYNAMIC SECTION:
-        Request: is signed in? If not, display fields to be written into. -> check not null, then pass the input to next page
-            -> if so, request relevant address info from user account and display. 
-               if so, also display "is correct? change?" button that saves order and redirects to edit acc. deets.)
-        --%>
-        <h1>Payment Details Section (Dynamic)</h1> <br>
         
         <%--
         Save, Next buttons. (not dynamic this time. should be present regardless).
