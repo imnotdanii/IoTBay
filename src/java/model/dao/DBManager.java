@@ -58,5 +58,15 @@ public class DBManager {
 
     }
 
-   
+   public void addPayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
+        statement.executeUpdate("INSERT INTO iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
+    }
+    public void updatePayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail)throws SQLException {
+        statement.executeUpdate("UPDATE iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
+}
+
+    public void deletePayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail)throws SQLException {
+        statement.executeUpdate("DELETE iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
+}
+
 }
