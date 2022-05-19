@@ -4,7 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class cartSummaryPage_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class orderSummaryPage_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -48,14 +48,14 @@ public final class cartSummaryPage_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
-      out.write("    \n");
       out.write("    <head>\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n");
       out.write("        <link type=\"text/css\" rel=\"stylesheet\" href=\"orderStyle.css\">\n");
-      out.write("        <title>IoTBay: Cart Summary Page</title>\n");
+      out.write("        <title>IoTBay: Order Form Page</title>\n");
       out.write("    </head>\n");
       out.write("    \n");
       out.write("    <body>\n");
+      out.write("        \n");
       out.write("        <header>\n");
       out.write("            <div id=\"top-bar\">\n");
       out.write("                <a href=\"index.html\"><img src=\"images/iotbaylogo.png\" alt=\"\" id=\"logo\"></a>\n");
@@ -64,56 +64,28 @@ public final class cartSummaryPage_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("        \n");
       out.write("        ");
       out.write("\n");
-      out.write("        <h1>Cart Summary Section (Dynamic)</h1> <br>\n");
-      out.write("        \n");
-      out.write("        <div id=\"cartDiv\">\n");
-      out.write("            \n");
-      out.write("            ");
-      out.write("\n");
-      out.write("            \n");
-      out.write("            ");
-
-                //for FUTURE cart component?
-                //get needed parameters
-                //Need a WatchCartServlet?
-                boolean cartEmpty = true; //request if cart is empty?
-                boolean loggedIn = false; //request status of session?
-                String cartMessage = ""; 
-            
-      out.write("\n");
-      out.write("            \n");
-      out.write("            ");
-
-                if (cartEmpty)
-                {
-                    cartMessage = "It looks like your cart is empty! Head over to the products page to add a product to your cart.";
-                }
-                else
-                {
-                    cartMessage = "Please select 'Create Order' to continue!";
-                }
-            
-      out.write("\n");
-      out.write("            \n");
-      out.write("            <p> ");
-      out.print( cartMessage );
-      out.write(" </p> <br>\n");
-      out.write("            \n");
-      out.write("            ");
-      out.write("\n");
-      out.write("            \n");
-      out.write("        </div>\n");
+      out.write("        <h1>Product Summary Section (Dynamic)</h1> <br>\n");
       out.write("        \n");
       out.write("        ");
       out.write("\n");
-      out.write("        <h1>Save/Create Order Buttons Section (Dynamic)</h1> <br>\n");
+      out.write("        <h1>Contact Information Section (Dynamic)</h1> <br>\n");
       out.write("        \n");
+      out.write("        ");
+      out.write("\n");
+      out.write("        <h1>Address Information Section (Dynamic)</h1> <br>\n");
+      out.write("        \n");
+      out.write("        ");
+      out.write("\n");
+      out.write("        <h1>Payment Details Section (Dynamic)</h1> <br>\n");
+      out.write("        \n");
+      out.write("        ");
+      out.write("\n");
       out.write("        <div id=\"orderButtonsDiv\">\n");
       out.write("            ");
       out.write("\n");
       out.write("            \n");
-      out.write("            <form action=\"/CreateOrderServlet\" method=\"post\">\n");
-      out.write("                <button>Create Order</button>\n");
+      out.write("            <form action=\"/SaveOrderServlet\" method=\"post\">\n");
+      out.write("                <button>Save Order</button>\n");
       out.write("            </form>\n");
       out.write("            \n");
       out.write("        </div>\n");
@@ -123,6 +95,7 @@ public final class cartSummaryPage_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("            <p>Introduction to Software Development 2022</p>\n");
       out.write("            <p>University of Technology, Sydney</p>\n");
       out.write("        </footer>\n");
+      out.write("        \n");
       out.write("    </body>\n");
       out.write("    \n");
       out.write("</html>\n");
