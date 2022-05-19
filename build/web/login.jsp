@@ -10,7 +10,7 @@
     <body>
         <header>
             <div id="top-bar">
-                <a href="index.html"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
+                <a href="index.jsp"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
             </div>
         </header>
 
