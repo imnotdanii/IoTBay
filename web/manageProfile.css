@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+
+html, body{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+#search-area-container{
+    display: flex;
+    width: 100%;
+    height:20%;
+}
+
+#logo{
+    width:240px;
+    height:100px;
+}
+
+#top-buttons{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#top-buttons a{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.search-form-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form-container button{
+    width:45px;
+    height:45px;
+}
+
+#content form{
+    display: inline;
+}
+
+#submit{
+    width: 200px;
+    height:50px;
+    background-color: #03bafc;
+    border: none;
+    color: white;
+    border-radius: 25px;
+}
+
+#search-bar{
+    width:900px;
+    height:40px;
+}
+
+#nav-container{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-top:1%;
+    padding-bottom:1%;
+    border: 1px solid #000000;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#nav-container ul{
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+
+}
+.nav-link{
+    text-decoration: none;
+    padding-right: 50px;
+    text-transform: uppercase;
+}
+
+/* main body */
+#grid-container{
+    display: grid;
+    grid-template-columns: 25vw 75vw;
+}
+
+#title{
+    text-align: center;
+    padding: 5px;
+    margin: 0;
+}
+
+#navbar{
+    height: 100%;
+    border-right: 1px solid black;
+}
+
+.account-link{
+    text-decoration: none;
+}
+
+#navbar li{
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    border-top: 1px solid black;
+}
+
+#navbar a{
+    padding-left: 20px;
+}
+
+#account-list{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+#content{
+    padding-left: 15px;
+}
+
+#content header{
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+code {
+    background-color: #e0e0e0;
+    display: block;
+    padding: 1%;
+}
+
+footer{
+    margin-top: 1%;
+    border-top: 1px solid #000000;
+    padding: 2% 0 2% 0;
+    text-align: end;
+}
+
+@media only screen and (max-width: 815px) {
+    /* For mobile phones: */
+    #navbar ul {
+        border: 1px solid;
+        height: 207px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #navbar {
+        background-color: hsl(0, 0%, 94%);
+        position: absolute;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        max-height: 275px;
+        border: none;
+        z-index: 1;
+        border-bottom: 2px solid;
+    }
+
+    #main-doc {
+        position: relative;
+        margin-left: 0px;
+        padding-lefT: 0;
+        margin-top: 270px;
+    }
+
+    #grid-container{
+        grid-template-columns: 100%;
+    }
+}
+

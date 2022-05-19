@@ -1,0 +1,116 @@
+/*
+Author: Danielle Alota
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
+
+html, body{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+}
+
+#search-area-container{
+    display: flex;
+    width: 100%;
+    height:20%;
+}
+
+#logo{
+    width:240px;
+    height:100px;
+}
+
+#top-buttons{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#top-buttons a{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.search-form-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-form-container button{
+    width:45px;
+    height:45px;
+}
+
+#search-bar{
+    width:900px;
+    height:40px;
+}
+
+#nav-container{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding-top:1%;
+    padding-bottom:1%;
+    border: 1px solid #000000;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+ul{
+    display: flex;
+    text-decoration: none;
+    list-style-type: none;
+
+}
+.nav-link{
+    text-decoration: none;
+    padding-right: 50px;
+    text-transform: uppercase;
+}
+
+#slideshow-container{
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+}
+
+.slideshow-animation {
+    position: relative;
+    animation-name: slide_animation;
+    animation-duration: 15s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running;
+}
+
+.img-container{
+    display: none;
+    vertical-align: middle;
+}
+
+@keyframes slide_animation {
+    0% {left:0px;}
+    20% {left:1200px;}
+    40% {left:2400px;}
+    60% {left:1200px;}
+    80% {left: 0px;}
+}
+
+#products-container{
+    display: grid;
+    justify-content: center;
+}
+
+footer{
+    margin-top: 1%;
+    border-top: 1px solid #000000;
+    padding: 2% 0 2% 0;
+    text-align: end;
+}
