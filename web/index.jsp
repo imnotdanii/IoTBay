@@ -75,22 +75,22 @@
             <div id="products-container"> 
                 <div class="products-row">
                     <div class="products-column">
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
+                        <a href=""><img src="images/R7000.png" alt="R7000"></a> 
+                        <a href=""><img src="images/RAX10.jpg" alt="RAX10"></a> 
+                        <a href=""><img src="images/RAX30.jpg" alt="RAX30"></a> 
+                        <a href=""><img src="images/RT2600ac.png" alt="RT2600ac"></a> 
                     </div>
                     <div class="products-column">
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
+                        <a href=""><img src="images/raspbi3.webp" alt=""></a> 
+                        <a href=""><img src="images/raspberrypi-modela.webp" alt=""></a> 
+                        <a href=""><img src="images/raspbi4.webp" alt=""></a> 
+                        <a href=""><img src="images/raspbicomputemodel.png" alt=""></a> 
                     </div>
                     <div class="products-column">
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
-                        <a href=""><img src="placeholder.jpg" alt=""></a> 
+                        <a href=""><img src="images/ebaydoorbell.webp" alt=""></a> 
+                        <a href=""><img src="images/googledoorbell.png" alt=""></a> 
+                        <a href=""><img src="images/ringdoorbell.webp" alt=""></a> 
+                        <a href=""><img src="images/blackdoorbell.webp" alt=""></a> 
                     </div>
                 </div>
 

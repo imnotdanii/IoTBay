@@ -9,7 +9,6 @@ html, body{
     padding: 0;
     scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
-    overflow: hidden;
 }
 
 #search-area-container{
@@ -106,6 +105,15 @@ ul{
 #products-container{
     display: grid;
     justify-content: center;
+}
+
+.products-column img{
+    width: 250px;
+    height: 250px;
+}
+
+.products-column img:hover {
+    transform: scale(1.1);
 }
 
 footer{

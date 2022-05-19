@@ -1,0 +1,57 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+#top-bar{
+}
+
+#logo{
+    width:240px;
+    height:100px;
+    display: flex;
+margin: 0 auto;
+}
+
+#middle-div{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    height:70vh;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+#middle-div form{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#middle-div input{
+    width:40%;
+    height:40px;
+    border-radius: 10px;
+    border-width: 0.7px; 
+}
+
+#middle-div button{
+    width: 200px;
+    height:50px;
+    background-color: #03bafc;
+    border: none;
+    color: white;
+    border-radius: 25px;
+}
+
+footer{
+    margin-top: 1%;
+    border-top: 1px solid #000000;
+    padding: 2% 0 2% 0;
+    text-align: end;
+}
