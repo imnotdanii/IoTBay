@@ -57,40 +57,73 @@ public class DBManager {
     //Add an order to the database:
     //orderID, accountID, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice
     public void addOrder(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordererName, String ordererAddress, String ordererPhone) throws SQLException {
-        statement.executeUpdate("INSERT INTO iotadmin.OrdersTable " + "VALUES(' " + orderID + " ', ' " + email + " ', ' " + orderProgress + " ', ' " + orderCancelled + " ', ' " + orderConfirmed + " ', ' " + editingEnabled + " ', ' " + dateCreated + " ', ' " + dateSubmitted + " ', ' " + totalOrderPrice + " ', ' " + ordererName + " ',' " + ordererAddress + " ',' " + ordererPhone + " ')");
+        statement.executeUpdate("INSERT INTO iotadmin.OrderTable " + "VALUES(" + orderID + ", '" + email + "', " + orderProgress + ", " + orderCancelled + ", " + orderConfirmed + ", " + editingEnabled + ", '" + dateCreated + "', '" + dateSubmitted + "', " + totalOrderPrice + ", '" + ordererName + "', '" + ordererAddress + "', '" + ordererPhone + "')");
     }
 
 //update an existing order in the database:  
     //also used for cancel order (rather than delete) as record needs to stay in system.
     public void updateOrder(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordererName, String ordererAddress, String ordererPhone) throws SQLException {
-        statement.executeUpdate("UPDATE iotadmin.OrdersTable SET ORDERID= ' " + orderID + " ', USEREMAIL= ' " + email + " ', ORDERPROGRESS= ' " + orderProgress + " ', ORDERCANCELLED= ' " + orderCancelled + " ', ORDERCONFIRMED= ' " + orderConfirmed + " ', EDITINGENABLED= ' " + editingEnabled + " ', DATECREATED= ' " + dateCreated + " ', DATESUBMITTED= ' " + dateSubmitted + " ', TOTALORDERPRICE= ' " + totalOrderPrice + " '', ORDERERNAME= ' " + ordererName + "', ordererAddress= ' " + ordererAddress + "', ordererPhone= ' " + ordererPhone + "' ");
+        statement.executeUpdate("UPDATE iotadmin.OrderTable SET USEREMAIL= '" + email + "', ORDERPROGRESS= " + orderProgress + ", ORDERCANCELLED= " + orderCancelled + ", ORDERCONFIRMED= " + orderConfirmed + ", EDITINGENABLED= " + editingEnabled + ", DATECREATED= '" + dateCreated + "', DATESUBMITTED= '" + dateSubmitted + "', TOTALORDERPRICE= " + totalOrderPrice + ", ORDERERNAME= '" + ordererName + "', ordererAddress= '" + ordererAddress + "', ordererPhone= '" + ordererPhone + "' WHERE ORDERID= " + orderID);
     }
 
 //delete an order from the database:
     public void deleteOrder(int orderID) throws SQLException {
-        statement.executeUpdate("DELETE FROM iotadmin.OrdersTable WHERE ORDERID= '" + orderID + "'");
+        statement.executeUpdate("DELETE FROM iotadmin.OrderTable WHERE ORDERID= " + orderID);
     }
 
 //Fetch Orders (for use when customers need to check their list of saved orders?)    
     public ArrayList<Order> fetchOrders() throws SQLException {
-        String fetch = "SELECT * FROM iotadmin.OrdersTable";
+        String fetch = "SELECT * FROM iotadmin.OrderTable";
         ResultSet rs = statement.executeQuery(fetch);
         ArrayList<Order> temp = new ArrayList();
 
         while (rs.next()) {
+            
             int orderID = rs.getInt(1);
-            int accountID = rs.getInt(2);
+            String userEmail = rs.getString(2);
             int orderProgress = rs.getInt(3);
             boolean orderCancelled = rs.getBoolean(4);
             boolean orderConfirmed = rs.getBoolean(5);
             boolean ordereditingEnabled = rs.getBoolean(6);
             String dateCreated = rs.getString(7);
-            String dateSubmitted = rs.getString(7);
-            double totalOrderPrice = rs.getDouble(8);
+            String dateSubmitted = rs.getString(8);
+            double totalOrderPrice = rs.getDouble(9);
+            String ordererName = rs.getString(10);
+            String ordererAddress = rs.getString(11);
+            String ordererPhone = rs.getString(12);
+            
+            Order o = new Order(orderID, userEmail, orderProgress, orderCancelled, orderConfirmed, ordereditingEnabled, dateCreated, dateSubmitted, totalOrderPrice, ordererName, ordererAddress, ordererPhone);
+            temp.add(o);
         }
         return temp;
     }
      
+    public Order fetchOrder(int orderID) throws SQLException {
+        String fetch = "SELECT * FROM iotadmin.OrderTable WHERE ORDERID =" + orderID;
+        ResultSet rs = statement.executeQuery(fetch);
+        Order order = new Order();
+
+        while (rs.next()) {
+            
+            String userEmail = rs.getString(2);
+            int orderProgress = rs.getInt(3);
+            boolean orderCancelled = rs.getBoolean(4);
+            boolean orderConfirmed = rs.getBoolean(5);
+            boolean ordereditingEnabled = rs.getBoolean(6);
+            String dateCreated = rs.getString(7);
+            String dateSubmitted = rs.getString(8);
+            double totalOrderPrice = rs.getDouble(9);
+            String ordererName = rs.getString(10);
+            String ordererAddress = rs.getString(11);
+            String ordererPhone = rs.getString(12);
+            
+            order = new Order(orderID, userEmail, orderProgress, orderCancelled, orderConfirmed, ordereditingEnabled, dateCreated, dateSubmitted, totalOrderPrice, ordererName, ordererAddress, ordererPhone);
+        }
+        return order;
+    }
+ 
+    
+    
     //Get the MAX existing orderID in the DB.
     public int getMaxExistingOrderID() throws SQLException {
         ArrayList <Order> currentOrders = fetchOrders();
@@ -105,6 +138,20 @@ public class DBManager {
         }
         return highestID;
     }
+    
+        //test this later as more efficient way to get maxid
+        public int getMaxExistingOrderID2() throws SQLException {
+        String fetch = "SELECT MAX(ORDERID) FROM iotadmin.OrderTable";
+        ResultSet rs = statement.executeQuery(fetch);
+
+        while (rs.next()) {
+            
+            return rs.getInt(1);
+        }
+        return 0;
+    }
+ 
+    
     
     //get price of the products in an order:
     //REQUIRES PRODUCTS TO BE SET UP. DEFAULT RESPONSE FOR NOW.

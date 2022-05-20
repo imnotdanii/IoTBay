@@ -65,7 +65,6 @@ The page should assess whether a user is signed in (if so, retrieve their exisit
                 <p>Please provide your details to complete your order.</p><br>
                 <br>
                 <div id="customerDetailsDiv">
-                    <%-- <%=request.getContextPath()%> --%>
                     <form action="<%=request.getContextPath()%>/SaveOrderServlet"  method="post">
                         <div id="custDeetsSubDivContact">
                             <label for="name">Name:</label>
@@ -82,6 +81,7 @@ The page should assess whether a user is signed in (if so, retrieve their exisit
                             <input type="checkbox" id="tos" name="tos" required="true"><br>
                         </div><br>
                         <br>
+                        <%-- Replace button1 with <p>Log in or create an account to save an order.</p> ? Or unclickable greyed button 1? (hover-over help?)--%>
                         <input type="submit" name="button1" value="Save Order" >
                         <input type="submit" name="button2" value="Proceed To Payment" >
                         <input type="submit" name="button3" value="Cancel Order" >
@@ -115,7 +115,16 @@ The page should assess whether a user is signed in (if so, retrieve their exisit
                 <form action="<%=request.getContextPath()%>/ManageProfileServlet" method="post">
                     <%-- is there a way other than "input" to retrieve the data? --%>
                     <button>Change Details</button><br>
-                    <button>Save Order</button><button>Proceed to Payment</button><button>Cancel Order</button>
+                </form>
+                <form>
+                    <%-- edit this to make sure it captures and sends info appropriately.--%>
+                    <br>
+                        <input type="submit" name="button1" value="Save Order" >
+                        <input type="submit" name="button2" value="Proceed To Payment" >
+                        <input type="submit" name="button3" value="Cancel Order" >
+                    <%--
+                        <button>Save Order</button><button>Proceed to Payment</button><button>Cancel Order</button>
+                    --%>
                 </form>
         <%
             }
