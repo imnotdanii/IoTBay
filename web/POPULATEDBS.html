@@ -1,0 +1,83 @@
+<!--Do this in order:
+
+ - Creating Users
+CREATE TABLE Users (
+Userid int NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+Name varchar(50) NOT NULL,
+Address varchar(100),
+Phone varchar(50),
+Dob varchar(50),
+Email varchar(50) NOT NULL,
+Password varchar(50) NOT NULL,
+OrderID int,
+CardNumber int);
+
+- Create Products
+CREATE TABLE Products
+(
+Productid int NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+Name varchar(50) NOT NULL,
+Description varchar(100),
+Quantity int,
+Category varchar(50),
+Supplier varchar(50) NOT NULL,
+Price double NOT NULL
+);
+
+ - Create Orders
+CREATE TABLE Orders
+(
+OrderID int,
+UserID int,
+OrderProgress int,
+OrderCancelled boolean,
+OrderConfirmed boolean,
+EditingEnabled boolean,
+DateCreated varchar(20),
+DateSubmitted varchar(20),
+TotalOrderPrice double,
+OrdererName varchar(50),
+OrdererAddress varchar(50),
+OrdererPhone varchar(50),
+ProductID int,
+PRIMARY KEY(OrderID)
+FOREIGN KEY (UserID) REFERENCES Users(UserId)
+FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+);
+
+-Create cardindo
+CREATE TABLE CardInfo (
+CardNumber int NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+CardOwnerName varchar(50) NOT NULL,
+ExpiryDate varchar(10) NOT NULL, 
+CVV varchar(5) NOT NULL, 
+OrderID int,
+UserID int,
+FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),                                                                                                                    FOREIGN KEY (email) REFERENCES Users(email)
+);
+
+INSERT INTO Users(name, address, phone, dob, email, password)
+VALUES('Ronald McDonald', '43 John St', '0487 156 723', '01/02/2000', 'ronald@mcdonald.com.au', 'burg3rs'),
+('Emma Stone', '12 Peter Street', '0987 111 112', '02/02/2000', 'emma.stone@gmail.com', 't1ngl3s'),
+('Harry Potter', '24 Privet Drive', '0465 444 444', '03/02/2000', 'harry@hogwarts.com.au', 'lum0s'),
+('Hermoine Granger', '30 Old Man Lane', '0478 828 822', '03/02/2000', 'hermoine@hogwarts.com.au', 'levi0sa'),
+('Ron Weasly', '30 Old Man Lane', '0478 828 822', '04/02/2000', 'ron@hogwarts.com.au', 'w1ngardium'),
+('Danielle Alota', '24 Chandos Street', '0424 779 774', '29/11/2000', 'daniellealota@yahoo.com', 'isd2022'),
+('Dylan Styman', '2/10 Birch Avenue', '0474 102 111','05/11/2000', 'dylan.styman@uts.edu.au', 'isd2022'),
+('Dan Yi', '9 Software Lane', '0123 423 444', '06/12/2000', 'dan.yi@student.edu.au', 'isd2022'),
+('Peter Parker', '15 Spidey Street', '0599 000 000', '24/12/2000', 'parker.peter@gmail.com', 'p3t3r'),
+('Katniss Everdeen', '12 District Lane', '0533 333 333', '13/11/2000', 'girlonfire@hotmail.com', 'k1ttyn0'),
+('Steven Universe', '13 Galaxy Way', '0222 222 222', '14/09/2000', 'universesteven@yahoo.com', 'g3msRkewl'),
+('Blake Belladonna', '26 Monty Road', '0455 555 555', '14/12/2000', 'blakebelladonna@gmail.com', 'blak3'),
+('Yang Xiao Long', '26 Monty Road', '0466 666 666', '14/04/2000','xiaolongyang@gmail.com', 'yang1'),
+('Ruby Rose', '26 Monty Road', '0499 827 211', '20/08/2000','rubyrose@gmail.com', 'rubyr0s3'),
+('Weiss Schnee', '26 Monty Road', '0901 012 012', '02/08/2000','weiss@schnee.com', 'w31ss'),
+('Akela Sloan', '24 Chandos Street', '0424 771 774', '13/10/2000','akelasloan@yahoo.com', 'ak3la'),
+('Joly Batac', '9/14 Mascot Street', '0421 122 433', '30/10/2000','jolybatac@hotmail.com', 'j0lymari3'),
+('Alexandra Mac', '7 Campbo Lane', '0466 722 722', '11/07/2000','alex.mac@yahoo.com', 'alex1'),
+('Steve Rogers', '22 Avengers Way', '0123 456 789', '09/03/2000','steve.rogers@msn.com', 'st3v3'),
+('Tony Stark', '22 Avengers Way', '0129 444 236', '22/04/2000','tony@stark.com', 't0ny1sdab3st'),
+('Natasha Romanoff', '22 Avengers Way', '0823 451 111','24/11/2000', 'natasha.rom@shield.com', 'edjdn293'),
+('Bruce Banner', '22 Avengers Way', '0479 101 101', '4/11/2000','bruce.banner@gmail.com', 'bruuuuuce3'),
+('Thor Odinson', '1 Asgard Lane', '000', '23/11/2000', 'thor.odinson@yahoo.com', 'mjolnirth0r')
+;-->
