@@ -1,4 +1,6 @@
-<!--Do this in order:
+<!--
+
+DO THIS IN ORDER GUYS
 
  - Creating Users
 CREATE TABLE Users (
@@ -55,6 +57,12 @@ OrderID int,
 UserID int,
 FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),                                                                                                                    FOREIGN KEY (email) REFERENCES Users(email)
 );
+
+ALTER TABLE Users
+ADD FOREIGN KEY (OrderID) REFERENCES Orders(OrderID);
+
+ALTER TABLE Users
+ADD FOREIGN KEY (CardNumber) REFERENCES CardInfo(CardNumber);
 
 INSERT INTO Users(name, address, phone, dob, email, password)
 VALUES('Ronald McDonald', '43 John St', '0487 156 723', '01/02/2000', 'ronald@mcdonald.com.au', 'burg3rs'),
