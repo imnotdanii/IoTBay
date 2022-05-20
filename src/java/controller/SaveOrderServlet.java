@@ -108,7 +108,7 @@ public class SaveOrderServlet extends HttpServlet {
             request.getRequestDispatcher("PaymentDetails.jsp").include(request, response);
         }
         else if (request.getParameter("button3") != null) {
-
+ 
             orderProgress = -1;
             orderCancelled = true;
             orderConfirmed = false;
@@ -155,3 +155,4 @@ public class SaveOrderServlet extends HttpServlet {
     }
     
 }
+

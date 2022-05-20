@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/cdanielle/NetBeansProjects/IoTBay/src/java/controller/DeleteServlet.java</file>
-            <file>file:/Users/cdanielle/NetBeansProjects/IoTBay/src/java/model/dao/DBManager.java</file>
-            <file>file:/Users/cdanielle/NetBeansProjects/IoTBay/web/deleteUser.jsp</file>
-            <file>file:/Users/cdanielle/NetBeansProjects/IoTBay/web/manageProfile.jsp</file>
-            <file>file:/Users/cdanielle/NetBeansProjects/IoTBay/web/WEB-INF/web.xml</file>
-            <file>file:/Users/cdanielle/NetBeansProjects/IoTBay/src/java/controller/LoginServlet.java</file>
+            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/web/orderSummaryPage.jsp</file>
+            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/src/java/model/dao/DBManager.java</file>
+            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/web/orderOutcomePage.jsp</file>
+            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/src/java/model/Order.java</file>
+            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/src/java/controller/SaveOrderServlet.java</file>
         </group>
     </open-files>
 </project-private>
