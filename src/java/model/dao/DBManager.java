@@ -56,14 +56,14 @@ public class DBManager {
 
     //Add an order to the database:
     //orderID, accountID, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice
-    public void addOrder(int orderID, int accountID, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException {
-        statement.executeUpdate("INSERT INTO iotadmin.OrdersTable " + "VALUES(' " + orderID + " ', ' " + accountID + " ', ' " + orderProgress + " ', ' " + orderCancelled + " ', ' " + orderConfirmed + " ', ' " + editingEnabled + " ', ' " + dateCreated + " ', ' " + dateSubmitted + " ', ' " + totalOrderPrice + " ')");
+    public void addOrder(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordererName, String ordererAddress, String ordererPhone) throws SQLException {
+        statement.executeUpdate("INSERT INTO iotadmin.OrdersTable " + "VALUES(' " + orderID + " ', ' " + email + " ', ' " + orderProgress + " ', ' " + orderCancelled + " ', ' " + orderConfirmed + " ', ' " + editingEnabled + " ', ' " + dateCreated + " ', ' " + dateSubmitted + " ', ' " + totalOrderPrice + " ', ' " + ordererName + " ',' " + ordererAddress + " ',' " + ordererPhone + " ')");
     }
 
 //update an existing order in the database:  
     //also used for cancel order (rather than delete) as record needs to stay in system.
-    public void updateOrder(int orderID, int accountID, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException {
-        statement.executeUpdate("UPDATE iotadmin.OrdersTable SET ORDERID= ' " + orderID + " ', ACCOUNTID= ' " + accountID + " ', ORDERPROGRESS= ' " + orderProgress + " ', ORDERCANCELLED= ' " + orderCancelled + " ', ORDERCONFIRMED= ' " + orderConfirmed + " ', EDITINGENABLED= ' " + editingEnabled + " ', DATECREATED= ' " + dateCreated + " ', DATESUBMITTED= ' " + dateSubmitted + " ', TOTALORDERPRICE= ' " + totalOrderPrice + " ' ");
+    public void updateOrder(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordererName, String ordererAddress, String ordererPhone) throws SQLException {
+        statement.executeUpdate("UPDATE iotadmin.OrdersTable SET ORDERID= ' " + orderID + " ', USEREMAIL= ' " + email + " ', ORDERPROGRESS= ' " + orderProgress + " ', ORDERCANCELLED= ' " + orderCancelled + " ', ORDERCONFIRMED= ' " + orderConfirmed + " ', EDITINGENABLED= ' " + editingEnabled + " ', DATECREATED= ' " + dateCreated + " ', DATESUBMITTED= ' " + dateSubmitted + " ', TOTALORDERPRICE= ' " + totalOrderPrice + " '', ORDERERNAME= ' " + ordererName + "', ordererAddress= ' " + ordererAddress + "', ordererPhone= ' " + ordererPhone + "' ");
     }
 
 //delete an order from the database:
@@ -90,6 +90,30 @@ public class DBManager {
         }
         return temp;
     }
+     
+    //Get the MAX existing orderID in the DB.
+    public int getMaxExistingOrderID() throws SQLException {
+        ArrayList <Order> currentOrders = fetchOrders();
+        int size = currentOrders.size();
+        int highestID = 0;
+        for (int i = 0; i < size; i++) {
+            if (currentOrders.get(i) != null ) {
+                if (currentOrders.get(i).getOrderID() > highestID) {
+                    highestID = currentOrders.get(i).getOrderID();
+                }
+            }                
+        }
+        return highestID;
+    }
+    
+    //get price of the products in an order:
+    //REQUIRES PRODUCTS TO BE SET UP. DEFAULT RESPONSE FOR NOW.
+    public double getTotalPriceOfOrder(int orderID) throws SQLException {
+        double tempPrice = 0.00;
+        //Need products set up to proceed...
+        return tempPrice;
+    }
+    
 
     public void addPayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
         statement.executeUpdate("INSERT INTO iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");

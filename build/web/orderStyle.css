@@ -10,15 +10,41 @@
     Will add a lot more here soon.
 */
 
+/*
 #cartDiv {
   display: block;
 }
+*/
 
 #orderButtonsDiv {
     display: block;
     align-items: center;
 }
 
+#login-button-Div{
+  height: 200px;
+  position: relative; 
+}
+
+#customerDetailsDiv {
+    display: block;
+    align-items: center;
+}
+
+#custDeetsSubDivContact {
+    display: block;
+    align-items: center;
+}
+
+#custDeetsSubDivAddress {
+    display: block;
+    align-items: center;
+}
+
+#smallFont {
+    text-align: center;
+    font-size: x-small;
+}
 #logo{
   width:240px;
   height:100px;
