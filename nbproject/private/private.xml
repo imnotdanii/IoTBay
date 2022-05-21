@@ -2,12 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/web/orderSummaryPage.jsp</file>
-            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/src/java/model/dao/DBManager.java</file>
-            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/web/orderOutcomePage.jsp</file>
-            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/src/java/model/Order.java</file>
-            <file>file:/Users/dylanstyman/Documents/GitHub/IoTBay(3)/src/java/controller/SaveOrderServlet.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
