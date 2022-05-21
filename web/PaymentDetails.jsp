@@ -17,13 +17,13 @@
     <body>
         <header>
         <div id="top-bar">
-           <a href="index.jsp"><img src="iotbaylogo.png" alt="" id="logo"></a>
+           <a href="index.jsp"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
         </div>
     </header>
         <main>
         <div id="middle-div">
             <h1>Please enter your payment details</h1>
-            <h3>Or <a href="register.jsp">back to order</a></h3>
+            <h3>Or <a href="orderSummaryPage.jsp">back to order</a></h3>
         <!--<form action="ready.jsp" method="POST" id="payment-form">-->
             <h2><label for="payment-method">Choose a payment method:</label>
             <select id="payment-method" name="payment-method">
