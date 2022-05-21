@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.HashSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -22,13 +23,6 @@ import model.dao.DBManager;
  */
 public class SaveOrderServlet extends HttpServlet {
 
-//get current date/time stamp.
-    private String findDate() {
-        String date;
-        LocalDate localDate= java.time.LocalDate.now(); // how to retrieve current time?
-        date = localDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
-        return date;
-    }
     
 @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,13 +30,13 @@ public class SaveOrderServlet extends HttpServlet {
         DBManager db;
         db = (DBManager) session.getAttribute("manager");
         //Assume that a user is logged in. Figure out the logged out portion later.
-        
+
         /*
         1. get User. User user = xxxx
         2. (etc) 
         3.db.addorder(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException);
         */
-        
+
         User user = (User) session.getAttribute("user");
         //get parameters from previous form:
         String name = request.getParameter("name");
@@ -55,9 +49,14 @@ public class SaveOrderServlet extends HttpServlet {
         boolean orderCancelled;
         boolean orderConfirmed;
         boolean editingEnabled;
-        String dateCreated = null; //get today's date...
-        String dateSubmitted = null;
+        String dateCreated = ""; //null; //get today's date...
+        String dateSubmitted = ""; //null;
         double totalOrderPrice;
+        //String message for outcome page:
+        String message = "";
+
+        //For debugging:
+        Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.INFO, "test again");        
         
         //delegate relevant actions:
         if (request.getParameter("button1") != null) {
@@ -68,18 +67,22 @@ public class SaveOrderServlet extends HttpServlet {
             editingEnabled = false;
             dateCreated = findDate();
             try {
+                //if (db != null)
                 orderID = (db.getMaxExistingOrderID() + 1);
                 totalOrderPrice = db.getTotalPriceOfOrder(orderID);
                 //Save Order actions.
                 db.addOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
                 //db.addOrderToUser(email);
-                
-            } catch (SQLException ex) {
+                message = "Order was successfully saved. You can access it from 'My Orders'.";
+
+           } catch (SQLException ex) {
                 Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
+                message = "Order was not saved successfully.";
+           }
             
-            //Need to pass through outcomeMessage String "Order was saved" or such...
-            request.getRequestDispatcher("orderOutcomePage.jsp").include(request, response);
+            //set message for orderOutcomePage...
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("orderOutcomePage.jsp").forward(request, response);
         } 
         else if (request.getParameter("button2") != null) {
             //
@@ -87,7 +90,7 @@ public class SaveOrderServlet extends HttpServlet {
             orderCancelled = false;
             orderConfirmed = true;
             editingEnabled = false;
-            dateCreated = findDate();
+            dateCreated = findDate(); //need to make sure this can be distinguished when just saving.
             dateSubmitted = findDate();
             try {
                 orderID = (db.getMaxExistingOrderID() + 1);
@@ -96,7 +99,7 @@ public class SaveOrderServlet extends HttpServlet {
                 db.addOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
                 //db.updateOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
                 //db.addOrderToUser(email);
-                
+
             } catch (SQLException ex) {
                 Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -105,8 +108,8 @@ public class SaveOrderServlet extends HttpServlet {
             request.getRequestDispatcher("PaymentDetails.jsp").include(request, response);
         }
         else if (request.getParameter("button3") != null) {
-             
-            orderProgress = 0;
+ 
+            orderProgress = -1;
             orderCancelled = true;
             orderConfirmed = false;
             editingEnabled = false;
@@ -115,17 +118,41 @@ public class SaveOrderServlet extends HttpServlet {
                 orderID = (db.getMaxExistingOrderID() + 1);
                 totalOrderPrice = db.getTotalPriceOfOrder(orderID);
                 //Save Order actions.
-                db.updateOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
-                //db.addOrderToUser(email);
-                
+                //check if order exists: 
+                if (db.fetchOrder(orderID).getOrderID() > 0)
+                {
+                    // if so, update, if not, save as add.
+                    db.updateOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
+                    //db.removeOrderFromUser(email); //take off their list...
+                    message = "Order was successfully cancelled.";
+                }
+                else
+                {
+                    message = "Order does not exist, and was successfully cancelled.";
+                }
+
             } catch (SQLException ex) {
                 Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+                message = "Order was not saved successfully.";
             }
-            
+
             //Cancel Order Actions.
             //db.updateOrder();
             //db.removeOrderFromUser();
-            request.getRequestDispatcher("orderOutcomePage.jsp").include(request, response);
+            
+            //set message for orderOutcomePage...
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("orderOutcomePage.jsp").forward(request, response);
         }
     }
+    
+    //get current date/time stamp.
+    private String findDate() {
+        String date;
+        LocalDate localDate= java.time.LocalDate.now(); // how to retrieve current time?
+        date = localDate.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG));
+        return date;
+    }
+    
 }
+

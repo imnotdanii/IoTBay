@@ -24,6 +24,7 @@ public class ConnServlet extends HttpServlet {
 
     @Override //Create and instance of DBConnector for the deployment session
     public void init() {
+        Logger.getLogger(ConnServlet.class.getName()).log(Level.INFO, "ConnServlet Init"); 
         try {
             db = new DBConnector();
         } catch (ClassNotFoundException | SQLException ex) {

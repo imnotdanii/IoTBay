@@ -11,28 +11,51 @@ public class Order {
     //private Account userAccount;
     private String email;
     private int orderProgress;
-    private double totalOrderPrice;
     private boolean orderCancelled;
     private boolean orderConfirmed;
     private boolean editingEnabled; //for later (while true, save every 30 sec?)
     private String dateCreated; // is there a way to make this final w/o initialising yet?
     private String dateSubmitted;
+    private double totalOrderPrice;
+    private String ordererName;
+    private String ordererAddress;
+    private String ordererPhone;
+    
     private LinkedList <Product> productsInOrder; //list of products on order
     
     // Constructor:
 
-    public Order(int orderID, String email, int orderProgress, double totalOrderPrice, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, LinkedList<Product> productsInOrder) {
+    public Order(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordrererName, String ordererAddress, String ordererPhone) { // add LinkedList<Product> productsInOrder
         this.orderID = orderID;
         this.email = email;
         this.orderProgress = orderProgress;
-        this.totalOrderPrice = totalOrderPrice;
         this.orderCancelled = orderCancelled;
         this.orderConfirmed = orderConfirmed;
         this.editingEnabled = editingEnabled;
         this.dateCreated = dateCreated;
         this.dateSubmitted = dateSubmitted;
+        this.totalOrderPrice = totalOrderPrice;
+        this.ordererName = ordererName;
+        this.ordererAddress = ordererAddress;
+        this.ordererPhone = ordererPhone;
         this.productsInOrder = productsInOrder;
     }
+    
+    public Order() { // add LinkedList<Product> productsInOrder
+        this.orderID = 0;
+        this.email = "";
+        this.orderProgress = 0;
+        this.orderCancelled = false;
+        this.orderConfirmed = false;
+        this.editingEnabled = false;
+        this.dateCreated = "";
+        this.dateSubmitted = "";
+        this.totalOrderPrice = 0;
+        this.ordererName = "";
+        this.ordererAddress = "";
+        this.ordererPhone = "";
+        this.productsInOrder = null;
+    }    
 
     public void setOrderID(int orderID) {
         this.orderID = orderID;

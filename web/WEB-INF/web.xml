@@ -40,6 +40,11 @@
         <servlet-class>controller.PaymentServlet </servlet-class>
         <load-on-startup>0</load-on-startup>
     </servlet>
+    <servlet>
+        <servlet-name>SaveOrderServlet </servlet-name>
+        <servlet-class>controller.SaveOrderServlet </servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -78,6 +83,11 @@
         <servlet-name>PaymentServlet</servlet-name>
         <url-pattern>/PaymentServlet</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SaveOrderServlet</servlet-name>
+        <url-pattern>/SaveOrderServlet</url-pattern>
+    </servlet-mapping>
+    
     
     
     <session-config>

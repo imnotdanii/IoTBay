@@ -35,8 +35,9 @@ This page is used to display the outcome of the SAVE or ORDER actions (display s
         Request: outcome result from previous page
         --%>
         <h1>Outcome Section (Dynamic)</h1> <br>
-        
-        
+        <br>
+        <p> ${message} </p>
+        <br>
         <footer>
             <p>&copy; Group 8</p>
             <p>Introduction to Software Development 2022</p>
