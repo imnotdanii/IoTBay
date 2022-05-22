@@ -14,6 +14,8 @@ public class Validator implements Serializable {
     private final String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";
     private final String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";
     private final String passwordPattern = "[a-z0-9]{4,}";
+    private final String cnumberPattern = "[0-9]{16,}";
+    private final String cvvPattern = "[0-9]{3,}";
 
     public Validator() {
     }
@@ -47,5 +49,13 @@ public class Validator implements Serializable {
         session.setAttribute("existErr", "");
         session.setAttribute("nameErr", "Enter name");
 
+    }
+
+    public boolean validateCNumber(String CNumber) {
+        return validate(cnumberPattern, CNumber);
+    }
+
+    public boolean validateCVV(String cvv) {
+        return validate(cvvPattern, cvv);
     }
 }

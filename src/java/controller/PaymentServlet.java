@@ -30,8 +30,15 @@ public class PaymentServlet extends HttpServlet {
         DBManager db;
         db = (DBManager) session.getAttribute("manager");
         validator.clear(session);
-        request.getRequestDispatcher("PaymentDone.jsp").include(request, response);
-                
+        if (!validator.validateCNumber(CNumber)) {
+            session.setAttribute("CNumberErr", "Error: Card Number incorrect");
+            request.getRequestDispatcher("PaymentDetails.jsp").include(request, response);
+        } else if (!validator.validateCVV(cvv)) {
+            session.setAttribute("cvvErr", "Error: CVV Code incorrect");
+            request.getRequestDispatcher("PaymentDetails.jsp").include(request, response);
+        } 
+        
+            request.getRequestDispatcher("PaymentDone.jsp").include(request, response);
        }
 }
             
