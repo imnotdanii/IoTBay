@@ -1,7 +1,7 @@
 <%-- 
-    Document   : editUser
-    Created on : 18 May 2022, 4:10:28 pm
-    Author     : cdanielle
+    Document   : editPayment
+    Created on : 21/05/2022, 7:12:45 PM
+    Author     : dan
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>IoTBay: Edit Profile</title>
+        <title>IoTBay: Edit Payment</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="editUser.css">
@@ -57,7 +57,7 @@
                 <ul id="account-list">
                     <li><a href="#personal-information" class="account-link">Personal Information</a></li>
                     <li><a href="manageProfile.html#order-history" class="account-link">Order History</a></li>
-                    <li><a href="#editPayment.jsp" class="account-link">Payment Details</a></li>
+                    <li><a href="#payment-details" class="account-link">Payment Details</a></li>
                     <li><a href="manageProfile.html#request-access-logs" class="account-link">Request Access Logs</a></li>
                     <li><a href="manageProfile.html#contact-us" class="account-link">Contact Us</a></li>
                 </ul>
@@ -67,28 +67,26 @@
         <div id="content">
             <body>
                 <main id="main-doc">
-                    <section class="main-section"id="personal-information">
-                        <header>Personal Information</header>
+                    <section class="main-section"id="payment-details">
+                        <header>Payment Details</header>
                             <%
-                                User user = (User) session.getAttribute("user");
+                                Payment payment = (Payment) session.getAttribute("payment");
                             %>
-                        <form action="<%=request.getContextPath()%>/EditServlet"  method="post" id="register-form">
-                            <label for="name">Full Name:</label><br>
-                            <input type="text" id="name" name="name" placeholder="${user.getName()}" required="true"><br>
-                            <label for="phone">Phone number:</label><br>
-                            <input type="text" id="phone number" name="phone-number" placeholder="${user.getPhone()}" required="true"><br>
-                            <label for="address">Address:</label><br>
-                            <input type="text" id="address" name="address" placeholder="${user.getAddress()}" required="true"><br>
-                            <label for="dob">Date of birth:</label><br>
-                            <input type="date" id="dob" name="dob" placeholder="${user.getDob()}." required="true"><br>
-                            <label for="email">Email:</label><br>
-                            <input type="text" id="email" name="email" placeholder="${user.getEmail()}" required="true"><br>
-                            <label for="password">Password:</label><br>
-                            <input type="password" id="password" name="password" placeholder="Enter new password..." required="true"><br>
-                            <label for="password">Confirm your password:</label><br>
-                            <input type="password" placeholder="Confirm new password..."><br>
+                        <form action="<%=request.getContextPath()%>/EditPaymentServlet"  method="post" id="payment-form">
+                            <label for="COname">Card Owner Name:</label><br>
+                            <input type="text" id="COname" name="COname" placeholder="${payment.getCOname()}" required="true"><br>
+                            <label for="CNumber">Card Number:</label><br>
+                            <input type="text" id="CNumber" name="CNumber" placeholder="${payment.getCNumber()}" required="true"><br>
+                            <label for="EDate">Expiry Date:</label><br>
+                            <input type="text" id="EDate" name="EDate" placeholder="${payment.getEDate()}" required="true"><br>
+                            <label for="cvv">CVV Code:</label><br>
+                            <input type="date" id="cvv" name="dob" placeholder="${user.getDob()}." required="true"><br>
                             <input id="submit" type="submit" value="Update">
                         </form>
+                    </section>
+                    <section class="e-section" id="delete-paymentDetails">
+                        <header>Delete Payment Details</header>
+                        <p>If you wish to delete your account, <a href="deletePayment.jsp">click here</a>.</p>
                     </section>
                 </main>
             </body>

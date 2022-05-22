@@ -57,6 +57,7 @@
                 <ul id="account-list">
                     <li><a href="#personal-information" class="account-link">Personal Information</a></li>
                     <li><a href="manageProfile.html#order-history" class="account-link">Order History</a></li>
+                    <li><a href="#editPayment.jsp" class="account-link">Payment Details</a></li>
                     <li><a href="manageProfile.html#request-access-logs" class="account-link">Request Access Logs</a></li>
                     <li><a href="manageProfile.html#contact-us" class="account-link">Contact Us</a></li>
                 </ul>

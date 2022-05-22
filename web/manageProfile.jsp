@@ -63,6 +63,7 @@
                 <ul id="account-list">
                     <li><a href="#personal-information" class="account-link">Personal Information</a></li>
                     <li><a href="#order-history" class="account-link">Order History</a></li>
+                    <li><a href="#payment-details" class="account-link">Payment Details</a></li>
                     <li><a href="#request-access-logs" class="account-link">Request Access Logs</a></li>
                     <li><a href="#contact-us" class="account-link">Contact Us</a></li>
                 </ul>
@@ -97,6 +98,19 @@
                             <li>Lorem ipsum dolor sit.</li>
                             <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti.</li>
                             <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, natus.</li>
+                        </ul>
+                    </section>
+                        
+                    <section class="main-section"id="payment-details">
+                        <header>Payment Details    <a href="editPayment.jsp">edit</a>
+                            </header>
+                        <ul>
+                            <h3>Card Owner Name: </h3> 
+                            <p>${payment.getCOName()}</p>
+                            <h3>Expiry Date: </h3>
+                            <p>${payment.getExpiryDate()}</p>
+                            <h3>CVV Code: </h3>
+                            <p>***</p>
                         </ul>
                     </section>
 

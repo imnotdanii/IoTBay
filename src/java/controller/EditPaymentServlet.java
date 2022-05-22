@@ -16,29 +16,20 @@ import model.dao.DBManager;
  *
  * @author dan
  */
-public class PaymentServlet extends HttpServlet {
+public class EditPaymentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        Validator validator = new Validator();  
-        String COname = request.getParameter("Coname");
+        Validator validator = new Validator();
+        String COname = request.getParameter("COname");
         String CNumber = request.getParameter("CNumber");
         String EDate = request.getParameter("EDate");
         String cvv = request.getParameter("cvv");
-        
         DBManager db;
         db = (DBManager) session.getAttribute("manager");
         validator.clear(session);
-        if (!validator.validateCNumber(CNumber)) {
-            session.setAttribute("CNumberErr", "Error: Card Number incorrect");
-            request.getRequestDispatcher("PaymentDetails.jsp").include(request, response);
-        } else if (!validator.validateCVV(cvv)) {
-            session.setAttribute("cvvErr", "Error: CVV Code incorrect");
-            request.getRequestDispatcher("PaymentDetails.jsp").include(request, response);
-        } 
+        request.getRequestDispatcher("editPayment.jsp").include(request, response);
         
-            request.getRequestDispatcher("PaymentDone.jsp").include(request, response);
-       }
+    }
 }
-            
