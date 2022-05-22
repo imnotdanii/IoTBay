@@ -36,8 +36,9 @@ public class SaveOrderServlet extends HttpServlet {
         2. (etc) 
         3.db.addorder(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice) throws SQLException);
         */
-
+        
         User user = (User) session.getAttribute("user");
+        
         //get parameters from previous form:
         String name = request.getParameter("name");
         String address = request.getParameter("address");
@@ -54,9 +55,13 @@ public class SaveOrderServlet extends HttpServlet {
         double totalOrderPrice;
         //String message for outcome page:
         String message = "";
-
+        int userID = 1; 
+        int productID = 1;
+        
+        
+        
         //For debugging:
-        Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.INFO, "test again");        
+        //Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.INFO, "test again");        
         
         //delegate relevant actions:
         if (request.getParameter("button1") != null) {
@@ -66,12 +71,25 @@ public class SaveOrderServlet extends HttpServlet {
             orderConfirmed = false;
             editingEnabled = false;
             dateCreated = findDate();
+            
+            if (user != null) {
+                try {
+                    userID = db.getUserID(email);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    userID = 1; //if error, should still create order on default account with correct shipping details though.
+                }
+            }
+            else {
+                userID = 1;
+            }
+            
             try {
                 //if (db != null)
                 orderID = (db.getMaxExistingOrderID() + 1);
                 totalOrderPrice = db.getTotalPriceOfOrder(orderID);
                 //Save Order actions.
-                db.addOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
+                db.addOrder(orderID, userID, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone, productID);
                 //db.addOrderToUser(email);
                 message = "Order was successfully saved. You can access it from 'My Orders'.";
 
@@ -92,11 +110,24 @@ public class SaveOrderServlet extends HttpServlet {
             editingEnabled = false;
             dateCreated = findDate(); //need to make sure this can be distinguished when just saving.
             dateSubmitted = findDate();
+            ; 
+            if (user != null) {
+                try {
+                    userID = db.getUserID(email);
+                } catch (SQLException ex) {
+                    Logger.getLogger(SaveOrderServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    userID = 1; //if error, should still create order on default account with correct shipping details though.
+                }
+            }
+            else {
+                userID = 1;
+            }
+            
             try {
                 orderID = (db.getMaxExistingOrderID() + 1);
                 totalOrderPrice = db.getTotalPriceOfOrder(orderID);
                 //Save Order actions.
-                db.addOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
+                db.addOrder(orderID, userID, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone, productID);
                 //db.updateOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
                 //db.addOrderToUser(email);
 
@@ -121,7 +152,7 @@ public class SaveOrderServlet extends HttpServlet {
                 //check if order exists: 
                 if (db.fetchOrder(orderID).getOrderID() > 0)
                 {
-                    // if so, update, if not, save as add.
+                    // if so, update, if not, save as add. Add first?
                     db.updateOrder(orderID, email, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice, name, address, phone);
                     //db.removeOrderFromUser(email); //take off their list...
                     message = "Order was successfully cancelled.";

@@ -54,10 +54,29 @@ public class DBManager {
         statement.executeUpdate("DELETE FROM iotadmin.Users WHERE EMAIL='" + email + "'");
     }
 
+    //Find userID based on User Email (for Order use):
+    public int getUserID(String email) throws SQLException {
+        int userID = 1;
+        String fetch = "SELECT USERID FROM iotadmin.USERS WHERE EMAIL = '" + email + "'";        
+        
+        ResultSet rs = statement.executeQuery(fetch);
+
+        if (rs.next()) {        
+            userID = rs.getInt(1);      
+        }
+        return userID;
+    }
+
+    /*
     //Add an order to the database:
     //orderID, accountID, orderProgress, orderCancelled, orderConfirmed, editingEnabled, dateCreated, dateSubmitted, totalOrderPrice
-    public void addOrder(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordererName, String ordererAddress, String ordererPhone) throws SQLException {
-        statement.executeUpdate("INSERT INTO iotadmin.OrderTable " + "VALUES(" + orderID + ", '" + email + "', " + orderProgress + ", " + orderCancelled + ", " + orderConfirmed + ", " + editingEnabled + ", '" + dateCreated + "', '" + dateSubmitted + "', " + totalOrderPrice + ", '" + ordererName + "', '" + ordererAddress + "', '" + ordererPhone + "')");
+    public void addOrder(int orderID, int userID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordererName, String ordererAddress, String ordererPhone) throws SQLException {
+        statement.executeUpdate("INSERT INTO iotadmin.OrderTable " + "VALUES(" + orderID + ", " + userID + ", '" + email + "', " + orderProgress + ", " + orderCancelled + ", " + orderConfirmed + ", " + editingEnabled + ", '" + dateCreated + "', '" + dateSubmitted + "', " + totalOrderPrice + ", '" + ordererName + "', '" + ordererAddress + "', '" + ordererPhone + "')");
+    }
+    */
+    
+    public void addOrder(int orderID, int userID, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordererName, String ordererAddress, String ordererPhone, int productID) throws SQLException {
+        statement.executeUpdate("INSERT INTO iotadmin.OrderTable " + "VALUES(" + orderID + ", " + userID + ", " + orderProgress + ", " + orderCancelled + ", " + orderConfirmed + ", " + editingEnabled + ", '" + dateCreated + "', '" + dateSubmitted + "', " + totalOrderPrice + ", '" + ordererName + "', '" + ordererAddress + "', '" + ordererPhone + "', " + productID + ")");
     }
 
 //update an existing order in the database:  
@@ -91,8 +110,9 @@ public class DBManager {
             String ordererName = rs.getString(10);
             String ordererAddress = rs.getString(11);
             String ordererPhone = rs.getString(12);
+            int productID = rs.getInt(13);
             
-            Order o = new Order(orderID, userEmail, orderProgress, orderCancelled, orderConfirmed, ordereditingEnabled, dateCreated, dateSubmitted, totalOrderPrice, ordererName, ordererAddress, ordererPhone);
+            Order o = new Order(orderID, userEmail, orderProgress, orderCancelled, orderConfirmed, ordereditingEnabled, dateCreated, dateSubmitted, totalOrderPrice, ordererName, ordererAddress, ordererPhone, productID);
             temp.add(o);
         }
         return temp;
@@ -116,12 +136,41 @@ public class DBManager {
             String ordererName = rs.getString(10);
             String ordererAddress = rs.getString(11);
             String ordererPhone = rs.getString(12);
+            int productID = rs.getInt(13);
             
-            order = new Order(orderID, userEmail, orderProgress, orderCancelled, orderConfirmed, ordereditingEnabled, dateCreated, dateSubmitted, totalOrderPrice, ordererName, ordererAddress, ordererPhone);
+            order = new Order(orderID, userEmail, orderProgress, orderCancelled, orderConfirmed, ordereditingEnabled, dateCreated, dateSubmitted, totalOrderPrice, ordererName, ordererAddress, ordererPhone, productID);
         }
         return order;
     }
  
+    //get the product associated with an order.
+    //SHOULD do this for a LIST of products, but for now, will have to do just one product.
+    public int getProductIDOnOrder(int orderID) throws SQLException {
+        Order tempOrder = fetchOrder(orderID);
+        int orderProductID = tempOrder.getProductID();
+        return orderProductID;
+    }
+    
+    
+    //fetch product from product table...
+    public Product fetchProduct(int productID) throws SQLException {
+        String fetch = "SELECT * FROM iotadmin.Products WHERE PRODUCTID =" + productID;
+        ResultSet rs = statement.executeQuery(fetch);
+        Product product = new Product("", "", 0, "", "", 0.0);
+
+        while (rs.next()) {
+            
+            String name = rs.getString(2);
+            String description = rs.getString(3);
+            int quantity = rs.getInt(4);
+            String category = rs.getString(5);
+            String supplier = rs.getString(6);
+            double price = rs.getDouble(7);
+            
+            product = new Product(name, description, quantity, category, supplier, price);
+        }
+        return product;
+    }
     
     
     //Get the MAX existing orderID in the DB.
@@ -156,8 +205,9 @@ public class DBManager {
     //get price of the products in an order:
     //REQUIRES PRODUCTS TO BE SET UP. DEFAULT RESPONSE FOR NOW.
     public double getTotalPriceOfOrder(int orderID) throws SQLException {
-        double tempPrice = 0.00;
         //Need products set up to proceed...
+        //Temporarily, let's do...
+        double tempPrice = fetchProduct(orderID).getPrice();
         return tempPrice;
     }
     

@@ -27,7 +27,7 @@ Price double NOT NULL
 );
 
  - Create Orders
-CREATE TABLE Orders
+CREATE TABLE ORDERTABLE
 (
 OrderID int,
 UserID int,
@@ -42,9 +42,9 @@ OrdererName varchar(50),
 OrdererAddress varchar(50),
 OrdererPhone varchar(50),
 ProductID int,
-PRIMARY KEY(OrderID)
-FOREIGN KEY (UserID) REFERENCES Users(UserId)
-FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+PRIMARY KEY(OrderID),
+FOREIGN KEY (UserID) REFERENCES Users(UserId),
+FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
 -Create cardindo
@@ -55,17 +55,18 @@ ExpiryDate varchar(10) NOT NULL,
 CVV varchar(5) NOT NULL, 
 OrderID int,
 UserID int,
-FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),                                                                                                                    FOREIGN KEY (email) REFERENCES Users(email)
+FOREIGN KEY (OrderID) REFERENCES ORDERTABLE(OrderID),                                                                                                                    FOREIGN KEY (email) REFERENCES Users(email)
 );
 
 ALTER TABLE Users
-ADD FOREIGN KEY (OrderID) REFERENCES Orders(OrderID);
+ADD FOREIGN KEY (OrderID) REFERENCES ORDERTABLE(OrderID);
 
 ALTER TABLE Users
 ADD FOREIGN KEY (CardNumber) REFERENCES CardInfo(CardNumber);
 
 INSERT INTO Users(name, address, phone, dob, email, password)
-VALUES('Ronald McDonald', '43 John St', '0487 156 723', '01/02/2000', 'ronald@mcdonald.com.au', 'burg3rs'),
+VALUES('Default Test User', 'Default Test Address', '0400 000 000', '01/01/2000', 'test.email@gmail.com', 'test'),
+('Ronald McDonald', '43 John St', '0487 156 723', '01/02/2000', 'ronald@mcdonald.com.au', 'burg3rs'),
 ('Emma Stone', '12 Peter Street', '0987 111 112', '02/02/2000', 'emma.stone@gmail.com', 't1ngl3s'),
 ('Harry Potter', '24 Privet Drive', '0465 444 444', '03/02/2000', 'harry@hogwarts.com.au', 'lum0s'),
 ('Hermoine Granger', '30 Old Man Lane', '0478 828 822', '03/02/2000', 'hermoine@hogwarts.com.au', 'levi0sa'),
@@ -88,4 +89,34 @@ VALUES('Ronald McDonald', '43 John St', '0487 156 723', '01/02/2000', 'ronald@mc
 ('Natasha Romanoff', '22 Avengers Way', '0823 451 111','24/11/2000', 'natasha.rom@shield.com', 'edjdn293'),
 ('Bruce Banner', '22 Avengers Way', '0479 101 101', '4/11/2000','bruce.banner@gmail.com', 'bruuuuuce3'),
 ('Thor Odinson', '1 Asgard Lane', '000', '23/11/2000', 'thor.odinson@yahoo.com', 'mjolnirth0r')
-;-->
+;
+
+INSERT INTO PRODUCTS(
+Name, Description, Quantity, Category, Supplier, Price)
+VALUES('Default Test Product', 'For testing purposes.', 1, 'Default Category', 'Default Test Supplier', 5.00),
+('Copper Wire (5m)','5 metre spool of copper wire', 5, 'Cables', 'Metalhead Manufacturers', 12.00),
+('Copper Wire (10m)','10 metre spool of copper wire', 5, 'Cables', 'Metalhead Manufacturers', 25.99),
+('Router','A network router.', 20, 'Network', 'N3rdW3rld', 25.75),
+('Switch','A network switch.', 19, 'Network', 'N3rdW3rld', 21.00),
+('Fancy Router','A router, but make it fancy.', 5, 'Network', 'Fancy Things Ltd.', 100.00),
+('Fancy Switch','A switch, but make it fancy.', 3, 'Network', 'Fancy Things Ltd.', 99.99),
+('Red LED','A single red LED light.', 200, 'Lighting', 'LightRoom Inc.', 0.75),
+('Blue LED','A single blue LED light.', 326, 'Lighting', 'LightRoom Inc.', 0.75),
+('Yellow LED','A single yellow LED light.', 92, 'Lighting', 'LightRoom Inc.', 0.75)
+;
+
+INSERT INTO ORDERTABLE(OrderID, UserID, OrderProgress, OrderCancelled, OrderConfirmed, EditingEnabled, DateCreated, DateSubmitted, TotalOrderPrice, OrdererName, OrdererAddress, OrdererPhone, ProductID)
+VALUES(1, 1, 0, false, false, false, '01/01/2022', '00/00/0000', 5.00,  'James Anon', '21 Anon Street', '0407 131 890', 1),
+(2, 1, 0, false, false, false, '01/01/2022', '00/00/0000', 5.00,  'Steve Anon', '21 Anon Street', '0407 131 890', 1),
+(3, 2, 0, false, false, false, '21/03/2022', '00/00/0000', 12.95, 'Ronald McDonald', '43 John St', '0487 156 723', 2),
+(4, 2, 0, false, false, false, '22/03/2022', '00/00/0000', 18.50, 'Ronald McDonald', '43 John St', '0487 156 723', 6),
+(5, 2, 0, false, false, false, '24/03/2022', '00/00/0000', 75.00, 'Ronald McDonald', '43 John St', '0487 156 723', 4),
+(6, 8, 0, false, false, false, '02/04/2022', '00/00/0000', 18.00, 'Dylan Styman', '21 Birch St', '0407 131 897', 6),
+(7, 8, 0, false, false, false, '10/04/2022', '00/00/0000', 12.10, 'Dylan Styman', '21 Birch St', '0407 131 897', 3),
+(8, 1, 0, false, false, false, '10/04/2022', '00/00/0000', 5.00,  'Beatrice Test', '42 Test Lane', '0477 111 120', 1),
+(9, 8, 0, false, false, false, '11/04/2022', '00/00/0000', 18.00, 'Dylan Styman', '21 Birch St', '0407 131 897', 6),
+(10, 8, 0, false, false, false, '17/04/2022', '00/00/0000', 207.93, 'Dylan Styman', '21 Birch St', '0407 131 897', 7)
+;
+
+-->
+

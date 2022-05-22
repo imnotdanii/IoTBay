@@ -20,12 +20,13 @@ public class Order {
     private String ordererName;
     private String ordererAddress;
     private String ordererPhone;
-    
+    // can't implement as list at the moment. Do as single productID for now?
+    private int productID; //temporary placeholder...
     private LinkedList <Product> productsInOrder; //list of products on order
     
-    // Constructor:
+    // Constructors:
 
-    public Order(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordrererName, String ordererAddress, String ordererPhone) { // add LinkedList<Product> productsInOrder
+    public Order(int orderID, String email, int orderProgress, boolean orderCancelled, boolean orderConfirmed, boolean editingEnabled, String dateCreated, String dateSubmitted, double totalOrderPrice, String ordrererName, String ordererAddress, String ordererPhone, int productID) { // add LinkedList<Product> productsInOrder
         this.orderID = orderID;
         this.email = email;
         this.orderProgress = orderProgress;
@@ -38,6 +39,7 @@ public class Order {
         this.ordererName = ordererName;
         this.ordererAddress = ordererAddress;
         this.ordererPhone = ordererPhone;
+        this.productID = productID; //temp
         this.productsInOrder = productsInOrder;
     }
     
@@ -54,6 +56,7 @@ public class Order {
         this.ordererName = "";
         this.ordererAddress = "";
         this.ordererPhone = "";
+        this.productID = 1; //make product #1 a default TEST product?
         this.productsInOrder = null;
     }    
 
@@ -103,6 +106,10 @@ public class Order {
 
     public String getEmail() {
         return email;
+    }
+    
+    public int getProductID() {
+        return productID;
     }
 
     public int getOrderProgress() {

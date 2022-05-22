@@ -18,7 +18,7 @@ This page is used to display the outcome of the SAVE or ORDER actions (display s
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link type="text/css" rel="stylesheet" href="orderStyle.css">
+        <link type="text/css" rel="stylesheet" href="orderStylev2.css">
         <title>IoTBay: Order Outcome Page</title>
     </head>
     
@@ -34,10 +34,14 @@ This page is used to display the outcome of the SAVE or ORDER actions (display s
         DYNAMIC SECTION:
         Request: outcome result from previous page
         --%>
-        <h1>Outcome Section (Dynamic)</h1> <br>
-        <br>
-        <p> ${message} </p>
-        <br>
+        <div id="allDone">
+            <br>
+            <h2>All done!</h2>
+            <br>
+            <p id="p1"> ${message} </p1>
+            <br>
+        </div> <br>
+        
         <footer>
             <p>&copy; Group 8</p>
             <p>Introduction to Software Development 2022</p>
