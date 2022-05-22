@@ -1,17 +1,18 @@
 <%-- 
-    Document   : manageProfile
-    Created on : 17 May 2022, 5:24:23 pm
-    Author     : cdanielle
+    Document   : adminProfile
+    Created on : 22/05/2022, 4:33:28 PM
+    Author     : kingsleybyrne
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@page import="model.*"%>
 <%@page import="controller.*"%>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>IoTBay: User Profile</title>
+        <title>IoTBay: Admin Profile</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link type="text/css" rel="stylesheet" href="manageProfile.css">
@@ -20,7 +21,7 @@
     </head>
     <header>
         <div id="search-area-container">
-            <a href="index.jsp"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
+            <a href="index.html"><img src="images/iotbaylogo.png" alt="" id="logo"></a>
             <div class="search-form-container">
                 <form>
                     <input type="text" placeholder="What are you looking for?" name="search-bar" id="search-bar">
@@ -30,15 +31,15 @@
             <div id="top-buttons"> 
                 <%
                     User user = (User) session.getAttribute("user");
+                    String existErr = (String) session.getAttribute("existErr");
+            String emailErr = (String) session.getAttribute("emailErr");
+            String passErr = (String) session.getAttribute("passErr");
                 %>
                 <!-- need to change back to jsp -->
                 <p>${user.getName()}</p>
                 <a href="logout.jsp"><button>Log Out</button></a>
                 <form action="<%=request.getContextPath()%>/ManageProfileServlet" method="post">
-                    <button>Manage My Profile</button>
-                </form>
-                <form action="<%=request.getContextPath()%>/AdminServlet" method="post">
-                    <button>Admin Dashboard</button>
+                    <button>Manage Profile</button>
                 </form>
                 <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
@@ -66,9 +67,9 @@
                 <ul id="account-list">
                     <li><a href="#personal-information" class="account-link">Personal Information</a></li>
                     <li><a href="#order-history" class="account-link">Order History</a></li>
-                    <li><a href="#payment-details" class="account-link">Payment Details</a></li>
                     <li><a href="#request-access-logs" class="account-link">Request Access Logs</a></li>
                     <li><a href="#contact-us" class="account-link">Contact Us</a></li>
+                    <li><a href="#Users" class="account-link">Users</a></li>
                 </ul>
             </nav>
         </div>
@@ -77,8 +78,32 @@
             <body>
                 <main id="main-doc">
                     <section class="main-section"id="personal-information">
+                        <header>Edit Users<a href="editUser.jsp">edit</a>
+                            </header>
+                        <h2>Edit Users<a href="editUser.jsp">edit</a>
+                            </h2>
+                        <form action="<%=request.getContextPath()%>/EditServlet" method="POST">
+                            <span class="message"> <%=(existErr != null ? existErr : "")%></span>
+                    <input class="" type="email" name="email" placeholder ="Enter email address..." required><br>
+                    <input class="" type="phone" name="phone" placeholder ="Enter phone number..." required><br>
+                    <button type="submit" id="login-button">Search</button>
+                </form>
+                    </section>
+                    <section class="main-section"id="personal-information">
+                        <header>Add Users<a href="register.jsp">edit</a>
+                            </header>
+                        <h2>Add Users<a href="register.jsp">edit</a>
+                            </h2>
+                        <form action="<%=request.getContextPath()%>/RegisterServlet" method="POST">
+                            <span class="message"> <%=(existErr != null ? existErr : "")%></span>
+                    <input class="" type="email" name="email" placeholder ="Enter email address..." required><br>
+                    <input class="" type="phone" name="phone" placeholder ="Enter phone number..." required><br>
+                    <button type="submit" id="login-button">Search</button>
+                </form>
+                    </section>
+                    <section class="main-section"id="personal-information">
                         <header>Personal Information    <a href="editUser.jsp">edit</a>
-                        </header>
+                            </header>
                         <ul>
                             <h3>Full name: </h3> 
                             <p>${user.getName()}</p>
@@ -104,19 +129,6 @@
                         </ul>
                     </section>
 
-                    <section class="main-section"id="payment-details">
-                        <header>Payment Details    <a href="editPayment.jsp">edit</a>
-                        </header>
-                        <ul>
-                            <h3>Card Owner Name: </h3> 
-                            <p>${payment.getCOName()}</p>
-                            <h3>Expiry Date: </h3>
-                            <p>${payment.getExpiryDate()}</p>
-                            <h3>CVV Code: </h3>
-                            <p>***</p>
-                        </ul>
-                    </section>
-
                     <section class="main-section" id="request-access-logs">
                         <header>Request Access Logs</header>
                         <p>If you would like to view your access logs, <a href="">click here to send an eRequest.</a></p>
@@ -129,7 +141,12 @@
 
                     <section class="e-section" id="delete-account">
                         <header>Delete Account</header>
-                        <p>If you wish to delete your account, <a href="deleteUser.jsp">click here</a>. You will not be able to retrieve your account.</p>
+                        <form action="<%=request.getContextPath()%>/RegisterServlet" method="POST">
+                            <span class="message"> <%=(existErr != null ? existErr : "")%></span>
+                    <input class="" type="email" name="email" placeholder ="Enter email address..." required><br>
+                    <input class="" type="phone" name="phone" placeholder ="Enter phone number..." required><br>
+                    <p>Delete Account <a href="deleteUser.jsp">click here</a></p>
+                </form>
                     </section>
                 </main>
             </body>

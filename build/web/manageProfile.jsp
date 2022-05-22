@@ -37,6 +37,9 @@
                 <form action="<%=request.getContextPath()%>/ManageProfileServlet" method="post">
                     <button>Manage My Profile</button>
                 </form>
+                <form action="<%=request.getContextPath()%>/AdminServlet" method="post">
+                    <button>Admin Dashboard</button>
+                </form>
                 <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
@@ -75,7 +78,7 @@
                 <main id="main-doc">
                     <section class="main-section"id="personal-information">
                         <header>Personal Information    <a href="editUser.jsp">edit</a>
-                            </header>
+                        </header>
                         <ul>
                             <h3>Full name: </h3> 
                             <p>${user.getName()}</p>
@@ -100,10 +103,10 @@
                             <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit, natus.</li>
                         </ul>
                     </section>
-                        
+
                     <section class="main-section"id="payment-details">
                         <header>Payment Details    <a href="editPayment.jsp">edit</a>
-                            </header>
+                        </header>
                         <ul>
                             <h3>Card Owner Name: </h3> 
                             <p>${payment.getCOName()}</p>

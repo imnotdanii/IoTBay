@@ -224,4 +224,22 @@ public class DBManager {
         statement.executeUpdate("DELETE iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
     }
     
+//     public User findUserProfile(String email, String phone) throws SQLException {
+//        String s = "SELECT * FROM IOTADMIN.Users where EMAIL = '" + email + "'and PHONE='" + phone+ "'";
+//        ResultSet rs = statement.executeQuery(s);
+//        while (rs.next()) {
+//            System.out.println("looking for user");
+//            String userEmail = rs.getString(6);
+//            String userPhone = rs.getString(10);
+//            if (userEmail.equals(email) && userPhone.equals(phone)) {
+//                String userName = rs.getString(2);
+//                String userDOB = rs.getString(5);
+//                String userPhone = rs.getString(4); 
+//                String userAddr = rs.getString(3);
+//                return new User(userName, userAddr, userPhone, userDOB, userEmail, userPass);
+//            }
+//        }
+//        return null;
+//    }
+    
 }
