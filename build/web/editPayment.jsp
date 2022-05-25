@@ -80,7 +80,7 @@
                             <label for="EDate">Expiry Date:</label><br>
                             <input type="text" id="EDate" name="EDate" placeholder="${payment.getEDate()}" required="true"><br>
                             <label for="cvv">CVV Code:</label><br>
-                            <input type="date" id="cvv" name="dob" placeholder="${user.getDob()}." required="true"><br>
+                            <input type="text" id="cvv" name="dob" placeholder="${user.getDob()}." required="true"><br>
                             <input id="submit" type="submit" value="Update">
                         </form>
                     </section>

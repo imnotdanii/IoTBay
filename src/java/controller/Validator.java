@@ -16,6 +16,8 @@ public class Validator implements Serializable {
     private final String passwordPattern = "[a-z0-9]{4,}";
     private final String cnumberPattern = "[0-9]{16,}";
     private final String cvvPattern = "[0-9]{3,}";
+        private final String phonePattern = "[a-z0-9]{4,}";
+
 
     public Validator() {
     }
@@ -43,7 +45,7 @@ public class Validator implements Serializable {
         return validate(passwordPattern, password);
     }
 
-    void clear(HttpSession session) {
+    public void clear(HttpSession session) {
         session.setAttribute("emailErr", "Enter email");
         session.setAttribute("passErr", "Enter password");
         session.setAttribute("existErr", "");
@@ -57,5 +59,9 @@ public class Validator implements Serializable {
 
     public boolean validateCVV(String cvv) {
         return validate(cvvPattern, cvv);
+    }
+    
+   public boolean validatePhone(String phone) {
+        return validate(phonePattern, phone);
     }
 }

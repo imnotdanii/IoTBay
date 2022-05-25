@@ -17,13 +17,17 @@
         <main>
             <div id="middle-div">
                 <h1>Delete My Account</h1>
+                <%
+                    String existErr = (String) session.getAttribute("existErr");
+                    String emailErr = (String) session.getAttribute("emailErr");
+                    String passErr = (String) session.getAttribute("passErr");
+                %>
+                <span class="message"> <%=(existErr != null ? existErr : "")%></span>
                 <form action="<%=request.getContextPath()%>/DeleteServlet" method="POST">
                     <label for="email" id="email-label" >Email:</label><br>
                     <input class="" type="email" name="email" placeholder ="Enter your email address..." required><br>
-
                     <label for="password" id="password-label">Password:</label><br>
                     <input class="" type="password" name="password" placeholder ="Enter your password..." required><br>
-
                     <button type="submit" id="login-button">Delete</button>
                 </form>
             </div>

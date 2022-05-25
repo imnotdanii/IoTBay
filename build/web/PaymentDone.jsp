@@ -35,3 +35,10 @@
         </footer>
     </body>
 </html>
+
+
+<script>
+    setTimeout(function(){
+        window.location.href = 'index.jsp';
+    }, 3000);
+</script>

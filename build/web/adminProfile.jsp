@@ -84,7 +84,7 @@
                             </h2>
                         <form action="<%=request.getContextPath()%>/EditServlet" method="POST">
                             <span class="message"> <%=(existErr != null ? existErr : "")%></span>
-                    <input class="" type="email" name="email" placeholder ="Enter email address..." required><br>
+                    <input class="" type="name" name="name" placeholder ="Enter name..." required><br>
                     <input class="" type="phone" name="phone" placeholder ="Enter phone number..." required><br>
                     <button type="submit" id="login-button">Search</button>
                 </form>
@@ -96,7 +96,7 @@
                             </h2>
                         <form action="<%=request.getContextPath()%>/RegisterServlet" method="POST">
                             <span class="message"> <%=(existErr != null ? existErr : "")%></span>
-                    <input class="" type="email" name="email" placeholder ="Enter email address..." required><br>
+                    <input class="" type="name" name="name" placeholder ="Enter name..." required><br>
                     <input class="" type="phone" name="phone" placeholder ="Enter phone number..." required><br>
                     <button type="submit" id="login-button">Search</button>
                 </form>
@@ -143,7 +143,7 @@
                         <header>Delete Account</header>
                         <form action="<%=request.getContextPath()%>/RegisterServlet" method="POST">
                             <span class="message"> <%=(existErr != null ? existErr : "")%></span>
-                    <input class="" type="email" name="email" placeholder ="Enter email address..." required><br>
+                    <input class="" type="name" name="name" placeholder ="Enter name..." required><br>
                     <input class="" type="phone" name="phone" placeholder ="Enter phone number..." required><br>
                     <p>Delete Account <a href="deleteUser.jsp">click here</a></p>
                 </form>
