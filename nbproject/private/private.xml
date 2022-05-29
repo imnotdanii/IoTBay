@@ -3,12 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/cdanielle/Desktop/GitHub/IoTBay/src/java/controller/DeleteServlet.java</file>
-            <file>file:/Users/cdanielle/Desktop/GitHub/IoTBay/src/java/model/dao/DBManager.java</file>
-            <file>file:/Users/cdanielle/Desktop/GitHub/IoTBay/src/java/controller/LoginServlet.java</file>
-            <file>file:/Users/cdanielle/Desktop/GitHub/IoTBay/web/deleteUser.jsp</file>
-            <file>file:/Users/cdanielle/Desktop/GitHub/IoTBay/web/login.jsp</file>
-            <file>file:/Users/cdanielle/Desktop/GitHub/IoTBay/src/java/controller/Validator.java</file>
+            <file>file:/Users/alleria/Documents/GitHub/IoTBay/web/PaymentDone.jsp</file>
+            <file>file:/Users/alleria/Documents/GitHub/IoTBay/src/java/controller/DeleteServlet.java</file>
+            <file>file:/Users/alleria/Documents/GitHub/IoTBay/web/adminProfile.jsp</file>
         </group>
     </open-files>
 </project-private>

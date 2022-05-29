@@ -36,12 +36,12 @@
             </h2>
             
             <form action="<%=request.getContextPath()%>/PaymentServlet" method="post">
-                <label for="name">Card Owner Name:</label><br>
+                <label for="COname">Card Owner Name:</label><br>
                 <input type="text" id="COname" name="COname" placeholder="Enter your card owner name..." required="true"><br>
                 <label for="CNumber">Card Number:</label><br>
                 <input type="text" id="CNumber" name="CNumber" placeholder="Enter your card number..." required="true"><br>
-                <label for="EDate">Expiry Date:</label><br>
-                <input type="text" id="EDate" name="EDate" placeholder="Enter your card expiry date..." required="true"><br>
+                <label for="ExpiryDate">Expiry Date:</label><br>
+                <input type="text" id="ExpiryDate" name="ExpiryDate" placeholder="Enter your card expiry date..." required="true"><br>
                 <label for="cvv">CVV Code:</label><br>
                 <input type="password" id="cvv" name="cvv" placeholder="Enter your cvv code..." required="true"><br>
                 <button type="submit" id="payment-button" value="sumbit">Pay</button>

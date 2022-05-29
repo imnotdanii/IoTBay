@@ -109,7 +109,9 @@
                         </header>
                         <ul>
                             <h3>Card Owner Name: </h3> 
-                            <p>${payment.getCOName()}</p>
+                            <p>${payment.getCOname()}</p>
+                            <h3>Card Number: </h3> 
+                            <p>${payment.getCNumber()}</p>
                             <h3>Expiry Date: </h3>
                             <p>${payment.getExpiryDate()}</p>
                             <h3>CVV Code: </h3>

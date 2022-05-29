@@ -58,7 +58,7 @@ public class AdminServlet extends HttpServlet {
                     request.getRequestDispatcher("adminProfile.jsp").include(request, response);
                 }
                 //6- find user by email and password
-            } catch (SQLException | NullPointerException ex) {
+            } catch (NullPointerException ex) {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println(ex.getMessage() == null ? "User does not exist":"");
             }

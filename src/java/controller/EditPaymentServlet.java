@@ -24,7 +24,7 @@ public class EditPaymentServlet extends HttpServlet {
         Validator validator = new Validator();
         String COname = request.getParameter("COname");
         String CNumber = request.getParameter("CNumber");
-        String EDate = request.getParameter("EDate");
+        String expiryDate = request.getParameter("expiryDate");
         String cvv = request.getParameter("cvv");
         DBManager db;
         db = (DBManager) session.getAttribute("manager");

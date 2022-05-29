@@ -47,15 +47,16 @@ FOREIGN KEY (UserID) REFERENCES Users(UserId),
 FOREIGN KEY (ProductID) REFERENCES Products(ProductID)
 );
 
--Create cardindo
+-Create cardinfo
 CREATE TABLE CardInfo (
-CardNumber int NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-CardOwnerName varchar(50) NOT NULL,
+COName varchar(50) NOT NULL,
+CNumber int NOT NULL GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
 ExpiryDate varchar(10) NOT NULL, 
 CVV varchar(5) NOT NULL, 
 OrderID int,
 UserID int,
-FOREIGN KEY (OrderID) REFERENCES ORDERTABLE(OrderID),                                                                                                                    FOREIGN KEY (email) REFERENCES Users(email)
+FOREIGN KEY (OrderID) REFERENCES ORDERTABLE(OrderID), 
+FOREIGN KEY (email) REFERENCES Users(email)
 );
 
 Insert into CARDINFO (CARDOWNERNAME, CARDNUMBER, EXPIRYDATE, CVV)

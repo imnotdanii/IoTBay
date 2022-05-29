@@ -52,6 +52,11 @@
     </servlet>
     
     <servlet>
+        <servlet-name>deletePaymentServlet</servlet-name>
+        <servlet-class>controller.deletePaymentServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
         <servlet-name>AdminServlet</servlet-name>
         <servlet-class>controller.AdminServlet</servlet-class>
     </servlet>
@@ -101,6 +106,11 @@
     <servlet-mapping>
         <servlet-name>EditPaymentServlet</servlet-name>
         <url-pattern>/EditPaymentServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>deletePaymentServlet</servlet-name>
+        <url-pattern>/deletePaymentServlet</url-pattern>
     </servlet-mapping>
     
     <servlet-mapping>

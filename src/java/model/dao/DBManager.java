@@ -213,35 +213,37 @@ public class DBManager {
     }
     
 
-    public void addPayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
-        statement.executeUpdate("INSERT INTO iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
+    public void addPayment(String COname, String CNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
+        statement.executeUpdate("INSERT INTO iotadmin.Cardinfo (CONAME, CNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + COname + "', '" + CNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
     }
 
-    public void updatePayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
-        statement.executeUpdate("UPDATE iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
+    public void updatePayment(String COname, String CNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
+        statement.executeUpdate("UPDATE iotadmin.Cardinfo (CONAME, CNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + COname + "', '" + CNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
     }
 
-    public void deletePayment(String name, String cardNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
-        statement.executeUpdate("DELETE iotadmin.Cardinfo (NAME, CARDNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + name + "', '" + cardNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
+    public void deletePayment(String COname, String CNumber, String expiryDate, String cvv, String userEmail) throws SQLException {
+        statement.executeUpdate("DELETE iotadmin.Cardinfo (CONAME, CNUMBER, EXPIRYDATE, CVV, USEREMAIL)" + "VALUES('" + COname + "', '" + CNumber + "', '" + expiryDate + "', '" + cvv + "', '" + userEmail + "')");
     }
     
-    public User findUserProfile(String email, String phone) throws SQLException {
-        String s = "SELECT * FROM IOTADMIN.Users where NAME = '" + email + "'and PHONE='" + phone+ "'";
+    public Payment findPayment(String CNumber, String CVV) throws SQLException {
+        String s = "SELECT * FROM IOTADMIN.CardInfo where CNumber = '" + CNumber + "'and CVV='" + CVV + "'";
         ResultSet rs = statement.executeQuery(s);
         while (rs.next()) {
-            System.out.println("looking for user");
-            String userName = rs.getString(2);
-            String userPhoneNum = rs.getString(4);
-            if (userName.equals(email) && userPhoneNum.equals(phone)) {
-                String userEmail = rs.getString(6);
-                String userDOB = rs.getString(5);
-                String userPhone = rs.getString(4); 
-                String userAddr = rs.getString(3);
-                String userPass = rs.getString(7);
-                return new User(userName, userAddr, userPhone, userDOB, userEmail, userPass);
+            System.out.println("looking for payment");
+            String paymentCNumber = rs.getString(2);
+            String paymentCVV = rs.getString(4);
+            if (paymentCNumber.equals(CNumber) && paymentCVV.equals(CVV)) {
+                String paymentCOname = rs.getString(50);
+                String paymentexpiryDate = rs.getString(10); 
+                String paymentcvv = rs.getString(5);
+                return new Payment(paymentCNumber, paymentCOname, paymentexpiryDate, paymentcvv);
             }
         }
         return null;
+    }
+
+    public User findUserProfile(String name, String phone) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
    

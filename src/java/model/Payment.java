@@ -6,51 +6,48 @@ package model;
  */
 public class Payment {
     
-    String name;
-    String cardNumber;
+    String COname;
+    String CNumber;
     String expiryDate;
     String cvv;
 
-    public Payment(String name, String cardNumber, String expiryDate, String cvv) {
-        this.name = name;
-        this.cardNumber = cardNumber;
+    public Payment(String COname, String CNumber, String expiryDate, String cvv) {
+        this.COname = COname;
+        this.CNumber = CNumber;
         this.expiryDate = expiryDate;
         this.cvv = cvv;
     }
 
-    public String getName() {
-        return name;
+    public String getCOname() {
+        return COname;
     }
 
-    public String getCardNumber() {
-        return cardNumber;
+    public String getCNumber() {
+        return CNumber;
     }
 
     public String getExpiryDate() {
         return expiryDate;
     }
 
-    public String getCvv() {
+    public String getCVV() {
         return cvv;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCOName(String COname) {
+        this.COname = COname;
     }
 
-    public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+    public void setCNumber(String CNumber) {
+        this.CNumber = CNumber;
     }
 
-    public void setExpiryDate(String expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setExpiryDate(String ExpiryDate) {
+        this.expiryDate = ExpiryDate;
     }
 
-    public void setCvv(String cvv) {
-        this.cvv = cvv;
+    public void setCvv(String CVV) {
+        this.cvv = CVV;
     }
-    
-    
-    
-    
+     
 }

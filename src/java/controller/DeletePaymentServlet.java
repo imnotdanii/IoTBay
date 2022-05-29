@@ -25,8 +25,8 @@ public class DeletePaymentServlet extends HttpServlet {
         Validator validator = new Validator();
         String COname = request.getParameter("COname");
         String CNumber = request.getParameter("CNumber");
-        String EDate = request.getParameter("EDate");
-        String cvv = request.getParameter("cvv");
+        String ExpiryDate = request.getParameter("ExpiryDate");
+        String CVV = request.getParameter("CVV");
         DBManager db;
         db = (DBManager) session.getAttribute("manager");
         validator.clear(session);

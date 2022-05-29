@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.User;
+import model.Payment;
 import model.dao.DBManager;
 
 /**
@@ -22,9 +22,9 @@ public class PaymentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Validator validator = new Validator();  
-        String COname = request.getParameter("Coname");
+        String COname = request.getParameter("COname");
         String CNumber = request.getParameter("CNumber");
-        String EDate = request.getParameter("EDate");
+        String expiryDate = request.getParameter("expiryDate");
         String cvv = request.getParameter("cvv");
         
         DBManager db;

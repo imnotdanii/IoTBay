@@ -23,6 +23,10 @@ public class User {
         this.password = password;
     }
 
+    public User(String paymentCNumber, String paymentCOname, String paymentexpiryDate, String paymentcvv) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getName() {
         return name;
     }
